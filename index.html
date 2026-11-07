@@ -660,6 +660,146 @@ h2{font-size:26px}
 .modebtn svg{width:18px;height:18px}
 :root[data-theme="light"]{color-scheme:light}
 .mode-chips{display:flex;flex-wrap:wrap;gap:6px}
+/* ---- v12: ay listesi düzeltmesi ---- */
+.fmts .addrow .btn{width:auto;flex:none}
+/* ---- v12: ortak ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.cdot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+/* ---- alışveriş ---- */
+.shop-total{display:flex;flex-direction:column;gap:2px}
+.shop-total b{font-family:var(--hand);font-size:36px;line-height:1;color:var(--accent)}
+.shop-total span{font-size:13px;color:var(--ink-2)}
+.shop-row{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:10px 0;border-top:1px dashed var(--line)}
+.card>.shop-row:first-child,.rg-head+.shop-row{border-top:0}
+.shop-thumb{width:52px;height:52px;border-radius:10px;object-fit:cover;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-family:var(--hand);font-size:24px;font-weight:700}
+.shop-main{display:flex;flex-direction:column;gap:2px;text-align:left;border:0;background:transparent;padding:4px 0;color:var(--ink);min-width:0}
+.shop-main b{overflow-wrap:anywhere;font-size:15px}
+.shop-main small{color:var(--ink-2);font-size:12.5px}
+.shop-row.want .shop-main b::after{content:" ♥";color:var(--accent)}
+.shop-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.shop-price{font-weight:700;font-variant-numeric:tabular-nums;font-size:14px;white-space:nowrap}
+.shop-buy{min-height:32px;padding:4px 10px}
+.shop-link{grid-column:2/4;font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;justify-self:start;padding:2px 0}
+.shop-row.bought{opacity:.75}
+.shop-row.bought .shop-main b{text-decoration:line-through;text-decoration-color:var(--ink-2)}
+.shop-big{max-width:100%;max-height:260px;border-radius:12px;object-fit:contain}
+.shop-form{border-top:1px dashed var(--line);padding-top:12px}
+/* ---- hayaller ---- */
+.dream{gap:10px}
+.dream-photo{display:block;padding:0;border:0;background:none;margin:-18px -18px 2px;width:calc(100% + 36px);min-width:0;border-radius:14px 14px 0 0;overflow:hidden;max-height:200px}
+#dreamBody,#shopBody,#visionBody,#wheelBody{width:100%;min-width:0}
+.dream>*{min-width:0}
+.dream-photo img{width:100%;height:200px;object-fit:cover;display:block}
+.dream-top{display:flex;justify-content:space-between;align-items:center}
+.dream-area{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.dream-top .link{padding:4px 0;min-height:32px;font-size:13px}
+.dream-t{margin:0;font-family:var(--hand);font-size:26px;line-height:1.1;font-weight:700;overflow-wrap:anywhere}
+.dream-why{margin:0;font-style:italic;color:var(--ink-2);font-size:14.5px;overflow-wrap:anywhere}
+.dream .checks li{display:flex;align-items:center;gap:6px}
+.dream .checks li .check{flex:1;min-width:0}
+.dream .row{justify-content:space-between}
+.dream-yes{border-color:var(--gold);color:var(--ink)}
+.dream.done{background-color:color-mix(in srgb,var(--gold-soft) 55%,var(--card))}
+.dream-done{margin:0;color:var(--gold);font-weight:700}
+.dream-sec{margin:8px 2px 0;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+/* ---- vision board ---- */
+.vb-title{font-family:var(--hand);font-size:30px;font-weight:700;border:0;border-bottom:1.5px dashed var(--line);background:transparent;color:var(--ink);padding:4px 0;width:100%}
+.vb-tools .btn{min-height:40px}
+.vb-board{position:relative;border-radius:18px;background:color-mix(in srgb,var(--card) 70%,var(--paper));border:1px solid color-mix(in srgb,var(--line) 45%,transparent);min-height:160px;overflow:hidden}
+.vb-inner{position:relative}
+.vb-empty{padding:28px 20px;text-align:center}
+.vb-tile{position:absolute;border:0;padding:0;cursor:pointer;box-shadow:0 2px 4px rgba(40,30,20,.12),0 8px 18px -8px rgba(40,30,20,.35);transition:transform .2s}
+.vb-tile:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.vb-tile.pic{background:#FBF9F4;padding:calc(var(--w)*.04) calc(var(--w)*.04) 0;display:flex;flex-direction:column}
+.vb-tile.pic img{width:100%;flex:1;min-height:0;object-fit:cover;display:block;background:#E9E3D8}
+.vb-cap{height:calc(var(--w)*.16);line-height:calc(var(--w)*.16);display:block;text-align:center;font-family:var(--hand);font-weight:700;font-size:calc(var(--w)*.085);color:#2A2420;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px}
+.vb-tile.pic:not(:has(.vb-cap))::after{content:"";height:calc(var(--w)*.04)}
+.vb-tile.word{border-radius:12px;display:grid;place-items:center;padding:8px}
+.vb-word{font-family:var(--hand);font-weight:700;font-size:calc(var(--w)*.13);line-height:1.1;text-align:center;overflow-wrap:anywhere}
+.vb-tile.tone0{background:var(--accent-soft);color:var(--ink)}
+.vb-tile.tone1{background:var(--gold-soft);color:var(--ink)}
+.vb-tile.tone2{background:var(--ink);color:var(--paper)}
+.vb-tile.tone3{background:#FFFFFF;color:#2A2420}
+.vb-tape{position:absolute;top:-9px;left:32%;width:36%;height:18px;background:color-mix(in srgb,var(--accent) 38%,transparent);transform:rotate(-3deg)}
+.vb-dl{align-items:center}
+/* ---- zaman çarkı ---- */
+:root{--wc1:#2a78d6;--wc2:#eb6834;--wc3:#1baf7a;--wc4:#eda100;--wc5:#e87ba4;--wc6:#008300;--wc7:#6250d6;--wc8:#e34948}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--wc1:#3987e5;--wc2:#d95926;--wc3:#199e70;--wc4:#c98500;--wc5:#d55181;--wc6:#008300;--wc7:#9085e9;--wc8:#e66767}}
+:root[data-theme="dark"]{--wc1:#3987e5;--wc2:#d95926;--wc3:#199e70;--wc4:#c98500;--wc5:#d55181;--wc6:#008300;--wc7:#9085e9;--wc8:#e66767}
+.wheel-box{position:relative;width:100%;max-width:360px;margin:0 auto;aspect-ratio:1}
+.wheel{width:100%;height:100%;display:block;overflow:visible}
+.wh-track{fill:none;stroke:var(--accent-soft)}
+.wh-tick{stroke:var(--ink-2);stroke-width:1;opacity:.5}
+.wh-tick.big{stroke-width:2;opacity:.8}
+.wh-hour{font-size:12px;font-weight:700;fill:var(--ink-2);font-variant-numeric:tabular-nums}
+.wh-seg path{stroke:var(--card);stroke-width:2;cursor:pointer}
+.wheel.mini .wh-seg path{stroke-width:1.2;cursor:default}
+.wh-seg:focus{outline:none}
+.wh-seg:focus-visible path{stroke:var(--ink);stroke-width:3}
+.wh-seg.clash path{stroke:var(--ink);stroke-dasharray:4 3}
+.wh-lab{font-size:11px;font-weight:700;fill:#FFFFFF;pointer-events:none}
+.wh-lab.dk{fill:#1E1A16}
+.wh-now{stroke:var(--ink);stroke-width:2.5;stroke-linecap:round}
+.wh-nowdot{fill:var(--ink);stroke:var(--card);stroke-width:2}
+.c1>path,.wsw.c1{fill:var(--wc1);background:var(--wc1)}.c2>path,.wsw.c2{fill:var(--wc2);background:var(--wc2)}.c3>path,.wsw.c3{fill:var(--wc3);background:var(--wc3)}.c4>path,.wsw.c4{fill:var(--wc4);background:var(--wc4)}
+.c5>path,.wsw.c5{fill:var(--wc5);background:var(--wc5)}.c6>path,.wsw.c6{fill:var(--wc6);background:var(--wc6)}.c7>path,.wsw.c7{fill:var(--wc7);background:var(--wc7)}.c8>path,.wsw.c8{fill:var(--wc8);background:var(--wc8)}
+.wheel-mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;text-align:center;padding:0 31%}
+.wm-time{font-size:34px;font-variant-numeric:tabular-nums;line-height:1}
+.wm-time.sm{font-size:24px}
+.wm-now{font-size:13px;color:var(--ink-2);margin-top:4px;overflow-wrap:anywhere;line-height:1.25}
+.wheel-next{margin:0;text-align:center;font-weight:600;color:var(--ink)}
+.wh-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--ink-2)}
+.wl{display:inline-flex;align-items:center;gap:6px}
+.wsw{display:inline-block;width:12px;height:12px;border-radius:3px;flex:none}
+.plan-list{list-style:none;margin:0;padding:0}
+.plan-list li+li{border-top:1px dashed var(--line)}
+.plan-row{display:flex;align-items:center;gap:10px;width:100%;border:0;background:transparent;padding:11px 2px;min-height:44px;color:var(--ink);text-align:left}
+.pl-time{font-variant-numeric:tabular-nums;font-size:14px;color:var(--ink-2);white-space:nowrap}
+.pl-t{flex:1;min-width:0;font-weight:600;overflow-wrap:anywhere}
+.plan-list li.on .pl-t{color:var(--accent)}
+.pl-on{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.pl-clash,.clash-n{font-size:12px;font-weight:700;color:var(--ink);background:var(--warn-bg);border-radius:999px;padding:2px 8px}
+.plan-card{padding:10px 14px}
+.plan-today{display:flex;align-items:center;gap:14px;width:100%;border:0;background:transparent;padding:0;color:var(--ink);text-align:left}
+.plan-today .wheel{width:64px;height:64px;flex:none}
+.pt-txt{display:flex;flex-direction:column;gap:1px;flex:1;min-width:0}
+.pt-txt small{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.pt-txt b{font-size:17px;overflow-wrap:anywhere}
+.pt-txt .muted{font-size:13px}
+.pt-chev{transform:rotate(-45deg)}
+/* ---- v13: Kur'an takibi ---- */
+#quranBody{width:100%;min-width:0}
+.q-stat{display:flex;flex-direction:column;gap:6px;padding-top:10px;border-top:1px dashed var(--line)}
+.q-stat-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.q-lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);min-width:52px}
+.q-stat-top b{font-size:17px;font-variant-numeric:tabular-nums}
+.q-stat-top .muted{font-size:13px;font-variant-numeric:tabular-nums}
+.q-bar.t>span{background:var(--gold)}
+.q-stat-bot{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-height:32px}
+.q-stat-bot .link{padding:4px 0;font-size:14px}
+.q-done{color:var(--gold);font-weight:700}
+.q-tools{display:flex;flex-direction:column;gap:8px}
+.q-card{padding:6px 14px}
+.q-list{list-style:none;margin:0;padding:0}
+.q-list>li+li{border-top:1px dashed var(--line)}
+.q-row{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:8px;padding:8px 0;scroll-margin-top:calc(var(--hdr,150px) + 60px)}
+.q-no{width:32px;height:32px;display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--accent);border:1.5px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:50% 46% 52% 48%;font-variant-numeric:tabular-nums}
+.q-row.both .q-no{background:var(--accent);color:var(--accent-ink,#fff);border-color:var(--accent)}
+.q-main{display:flex;flex-direction:column;gap:1px;border:0;background:transparent;text-align:left;padding:6px 0;color:var(--ink);min-width:0;min-height:44px;justify-content:center}
+.q-main b{font-size:15.5px;overflow-wrap:anywhere}
+.q-main small{font-size:12px;color:var(--ink-2)}
+.q-tgs{display:flex;gap:6px}
+.q-tg{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 10px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink-2);font-size:13px;font-weight:600}
+.q-box{width:14px;height:14px;border:1.6px solid currentColor;border-radius:4px;display:grid;place-items:center;flex:none}
+.q-tg[aria-pressed="true"]{color:var(--ink)}
+.q-tg.q-m[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.q-tg.q-t[aria-pressed="true"]{border-color:var(--gold);background:var(--gold-soft)}
+.q-tg.q-m[aria-pressed="true"] .q-box{background:var(--accent);border-color:var(--accent)}
+.q-tg.q-t[aria-pressed="true"] .q-box{background:var(--gold);border-color:var(--gold)}
+.q-tg[aria-pressed="true"] .q-box::after{content:"";width:6px;height:3.5px;border:solid #fff;border-width:0 0 2px 2px;transform:translateY(-1px) rotate(-45deg)}
+.q-sheet-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:10px 0;border-top:1px dashed var(--line)}
+.q-date{width:auto;flex:1;min-width:140px}
+@media (max-width:360px){.q-tg{padding:0 8px;font-size:12px}.q-row{grid-template-columns:28px minmax(0,1fr) auto}}
 </style>
 </head>
 <body>
@@ -679,6 +819,7 @@ h2{font-size:26px}
     <div id="heroToday" class="hero-wrap"></div>
     <nav class="daystrip" id="dayStrip" aria-label="Günün özeti"></nav>
     <div class="notices" id="notices" aria-label="Hatırlatmalar"></div>
+    <section class="card plan-card" id="planCard" aria-label="Zaman çarkı" hidden></section>
     <section class="card" id="moodCard" aria-labelledby="h-mood">
       <div class="cardhead"><h2 id="h-mood">Bugün nasılsın?</h2><span class="muted" id="moodLabel"></span></div>
       <div class="moods" role="radiogroup" aria-labelledby="h-mood" id="moods"></div>
@@ -896,6 +1037,11 @@ h2{font-size:26px}
   <main id="v-letters" class="wrap" hidden><div id="letterBody" class="wrap"></div></main>
   <main id="v-hobby" class="wrap" hidden><div id="hobbyBody" class="wrap"></div></main>
   <main id="v-cabinet" class="wrap" hidden><div id="cabBody" class="wrap"></div></main>
+  <main id="v-shop" class="wrap" hidden><div id="shopBody" class="wrap"></div></main>
+  <main id="v-dreams" class="wrap" hidden><div id="dreamBody" class="wrap"></div></main>
+  <main id="v-vision" class="wrap" hidden><div id="visionBody" class="wrap"></div></main>
+  <main id="v-wheel" class="wrap" hidden><div id="wheelBody" class="wrap"></div></main>
+  <main id="v-quran" class="wrap" hidden><div id="quranBody" class="wrap"></div></main>
 
   <main id="v-export" class="wrap" hidden>
     <section class="card" aria-labelledby="h-ex">
@@ -993,11 +1139,11 @@ function el(tag,attrs,...kids){const e=document.createElement(tag);if(attrs)for(
 
 /* Sihirli konu soruları (her biri bir satır) */
 const QUESTIONS=["Sonbahar deyince aklına gelen ilk şey ne?", "Bu ay hayatına eklemek istediğin küçük bir rutin var mı?", "Sonbaharda yapmayı en çok sevdiğin şey ne?", "Şu an telefonunda en son kaydettiğin fotoğraf ne?", "Son zamanlarda “Bunu herkes bilmeli” dediğin bir keşif ne?", "Bir arkadaşınla bugün buluşacak olsanız ne yapardınız?", "Bu ay kendine almak istediğin bir şey var mı?", "Çocukken sonbaharı en çok ne için severdin?", "Şu an bir kursa yazılacak olsan ne öğrenmek isterdin?", "Son zamanlarda gittiğin en güzel yer neresi?", "Bir hafta boyunca her gün aynı kahvaltıyı yapacak olsan ne seçerdin?", "Bu ayın sana verdiği bir his var mı?", "Son zamanlarda arkadaşlarına en çok hangi şeyi anlatıyorsun?", "Bir günlüğüne istediğin bir şehirde yaşama şansın olsa nereyi seçerdin?", "Şu an dolabında en sevdiğin kıyafet hangisi?", "Son zamanlarda yaptığın en spontane plan neydi?", "Bir akşamını tamamen kendine ayırsan nasıl geçirirdin?", "Bu ay mutlaka görmek istediğin bir yer var mı?", "Şu an hayatında daha fazla olsun istediğin şey ne?", "Son zamanlarda keşfettiğin ve tekrar yapmak istediğin bir aktivite ne?", "Arkadaş grubunda genellikle hangi rolü üstleniyorsun?", "Bir gün boyunca sadece sevdiğin şeyleri yapacak olsan güne nasıl başlardın?", "Son zamanlarda sana “tam benlik” dedirten bir şey ne oldu?", "Yağmurlu bir günde evde mi kalırsın, dışarı mı çıkarsın?", "Şu an bir bilet hediye edilse hangi etkinliğe gitmek isterdin?", "Son zamanlarda yaptığın en iyi alışveriş neydi?", "Bu ay denemek istediğin yeni bir yemek veya mekân var mı?", "Bir arkadaşının sende en sevdiği özelliği ne?", "Şu an hayatının soundtrack’ine hangi şarkıyı koyardın?", "Bu ay bitmeden mutlaka gerçekleştirmek istediğin bir plan ne?", "Bu ay takviminde en çok hangi günü bekliyorsun?", "Son zamanlarda denemek isteyip bir türlü fırsat bulamadığın şey ne?", "Bir mağazada kaybolana kadar gezebileceğin bölüm hangisi?", "Çocukken çok sevip artık yapmadığın bir şey var mı?", "Şu sıralar hakkında daha fazla şey öğrenmek istediğin konu ne?", "Bir arkadaşınla ortak bir proje yapacak olsanız ne yapardınız?", "Son zamanlarda önyargılarını kıran bir olay oldu mu?", "Telefonunda silmeye kıyamadığın eski bir fotoğraf var mı?", "Bir günlüğüne kendi kafeni açsan menüne kesinlikle ne koyardın?", "İnsanların çok sevdiği ama senin bir türlü sevemediğin şey ne?", "Evinde sadece bir köşeyi yeniden düzenleyebilsen nereden başlardın?", "Bu ay izleyeceğin dizi ne?", "Bir etkinliğe ücretsiz katılma hakkın olsa neyi seçerdin?", "Hayatında en çok hangi konuda fikrine danışılır?", "Bu aralar en çok dinlediğin şarkı ne?", "Bir ay boyunca yeni bir beceri öğrenmek zorunda olsan ne seçerdin?", "Arkadaşlarınla yaptığın ve her seferinde eğlendiğin aktivite ne?", "En yakınım dediğin kişi kim?", "Yazın en sevdiğin anısı ne?", "Bir günlüğüne başka bir mesleği deneyebilsen hangisini seçerdin?", "Sonbahar için en sevdiğin kıyafet kombini nasıl?", "Bir konuda uzman olup herkese öğretebilecek olsan bu ne olurdu?", "Son zamanlarda gereğinden fazla araştırdığın bir konu var mı?", "Bir arkadaşınla aranızda oluşmuş komik bir gelenek var mı?", "Şu an en çok eksikliğini hissettiğin şey ne?", "Bir hafta boyunca her gün farklı bir aktivite yapacak olsan ilk gün neyle başlardın?", "İnsanların seni en çok hangi konuda yanlış anladığını düşünüyorsun?", "Son zamanlarda karşılaştığın en güzel tesadüf neydi?", "Asla sıkılmadan haftalar geçirebileceğin arkadaşın hangisi?", "Bu ay kendine ayırdığın zaman yeterli mi?", "Bu ayın sonunda dönüp baktığında neyin gerçekleşmiş olmasını istersin?", "Sana hayatında değersiz hissettiren biri var mı?", "Kiminle bir günlüğüne yer değiştirmek isterdin?", "Sosyal hayatını nasıl tanımlarsın?", "Şu an hayatının sakin bir dönemi mi yoksa geçiş dönemi mi?", "Bir günlük süper gücün olsa neyi seçersin?", "Bugüne nasıl başladın?", "Neyi ertelemek istiyorsun?", "Geçen hafta en çok hangi günü sevdin?", "Bugün başını ne ağrıttı?", "En son kimden veya hangi olaydan ilham aldın?", "Sence en büyük başarın ne?", "Şu an bir ülkeye ışınlanabilsen nereyi isterdin?", "En az 10 yıllık bir arkadaşın var mı?", "Bugün sevildiğini hissettin mi?", "Bugün yapman gerekenler olmasa ne yapardın?", "6 ay öncesine gidebilsen neyi değiştirirdin?", "Bir gelirin var mı?", "Nasıl hatırlanmak istersin?", "Sana kötü geldiğini bildiğin bir alışkanlığın var mı?", "Saç stilin nasıl?", "Favori YouTube kanalın hangisi?", "Hayatından çıkarman gereken biri var mı?", "Sonsuza kadar hangi yemeği yiyebilirsin?", "Bugün yorucu muydu?", "Bir düşmanın olsa neyi bilmesini istemezsin?", "Podcast dinliyor musun? Dinliyorsan kimleri dinliyorsun?", "En son kiminle buluştun?", "Bu ay yeni bir kitaba başladın mı?", "İdeal “me time” etkinliklerini anlat.", "Bu ayı 10 üzerinden puanlasan kaç verirdin?", "Bu ay ilk yapmak istediğin şey ne?", "Son zamanlarda “Keşke bunu daha önce deneseydim” dediğin şey ne?", "Telefonunun duvar kâğıdı ne?", "Uğurlu sayın kaç ve neden uğurlu?", "Şu an hayatında “iyi ki var” dediğin alışkanlık ne?", "Bu yaz en güzel günün hangisiydi?", "Bir gün boyunca telefonsuz kalabilir misin?", "En son birine tavsiye ettiğin mekân neresiydi?", "Şu an çalma listende ilk sıradaki şarkı hangisi?", "Kendine en son ne için “aferin” dedin?", "Son zamanlarda en çok hangi kelimeyi kullanıyorsun?", "Bugün seni en çok ne şaşırttı?", "Şu an çantanda bulunan en gereksiz eşya ne?", "Bu ayın sonunda gerçekleşmesini istediğin küçük bir dileğin var mı?", "Son zamanlarda izlediğin en güzel film neydi?", "Bu yaz en çok kiminle görüştün?", "Şansın olsa şu an nereye ışınlanırdın?", "Son zamanlarda “bir daha kesin yaparım” dediğin aktivite ne?", "Bugün bir arkadaşın seni tek kelimeyle anlatsa ne derdi?", "Şu an en çok özlediğin yemek hangisi?", "Bu ay kendine vermek istediğin küçük ödül ne?", "Son zamanlarda seni en çok heyecanlandıran mesaj kimden geldi?", "En sevdiğin yaz kokusu ne? (Deniz, güneş kremi, toprak, kahve…)", "Bugün sosyal medyada ne kadar zaman geçirdin?", "Şu an yaşadığın şehre ilk kez geliyor olsan önce nereye giderdin?", "Son zamanlarda seni en çok düşündüren soru ne oldu?", "Bu mevsim bitmeden yapmak istediğin şey ne?", "Şu anki hayatın geride kalsa kendine nasıl bir kariyer inşa ederdin?", "Bu ay hayatını ne kolaylaştırdı?", "Bu ayı tek bir emojiyle anlatsan hangisini seçerdin?", "Gelecek aydaki kendine küçük bir not bırak.", "Konuşmaktan kaçındığın bir konu var mı?", "Annene ne sormak isterdin?", "Şu an ne olsa mutlu olurdun?", "En çok hangi aktiviteyi yapmak istiyorsun?", "Şu an kendinle ilgili en çok gurur duyduğun şey ne?", "Bugün seni ne güldürdü?", "En kısa sürede izlemek istediğin film ne?", "Üç kelimeyle kendini anlat.", "Bugün kimle konuşmak seni iyi hissettirdi?", "Favori dizin hangisi?", "En son yaptığın yaratıcı şey nedir?", "Hayatındaki küçük bir mutluluk ne?", "Bugün kendini nasıl motive ettin?", "Bugünü kiminle geçiriyorsun?", "Şu an seni en çok heyecanlandıran şey ne?", "Her durumda seni destekleyen biri var mı?", "Kişisel gelişimin için neler yapıyorsun?", "Kendini en son ne zaman bulutların üzerinde hissettin?", "En büyük eksikliğin ne?", "Bugün hangi sorunu çözdün?", "Kendini bir kelimeyle tanımlayacak olsan hangisi olurdu?", "1 ay sonra kendinle ilgili görmek istediğin değişim ne?", "İşinden, okulundan ya da bölümünden memnun musun?", "Neyi engellemek istiyorsun?", "Hayat sence adil mi?", "Uzun süredir aramayı ertelediğin biri var mı?", "Üç kelimeyle aileni anlat.", "En kötü huyun ne?", "Bugün seni gülümseten bir şey neydi?", "Şu an hangi hedefin peşindesin?", "Bu ay sana ne öğretti?", "Seni gerçekten tanıyan biri, hangi davranışından senin üzgün olduğunu anında anlar?", "Sırf başkaları hayal kırıklığına uğramasın diye sürdürdüğün bir “rol” var mı?", "Bu yıl bir renk olsaydı hangi renk olurdu?", "Tanımadığın birinin senin hakkında sahip olduğu ilk izlenim genellikle ne oluyor?", "İmza yemeğin var mı? Varsa ne?", "Şu anki sosyal çevreni 3 kelimeyle nasıl tanımlarsın?", "Kariyer hedefin ne?", "Seni en çok etkileyen film veya kitaptan bir alıntı yaz.", "Gergin bir gün geçirdiğinde akşamını nasıl planlarsın?", "Bu yılın şu ana kadarki kısmı senin için nasıl geçti?", "Guilty pleasure olsa da izlediğin dizi ya da reality show hangisi?", "Zamanını en çok alan şey ne?", "En son kiminle, nerede uzun bir kahve sohbeti yaptın?", "En son hangi yeteneğini geliştirmek için bir adım attın?", "Hangi konuda “asla taviz vermem” diyorsun?", "Şu anki favori Instagram hesabın veya içerik üreticin kim?", "Bugün fazladan 3 saatin olsa ne yapardın?", "Şu anki “ekran süren” seni tatmin ediyor mu, yoksa azaltmalı mısın?", "Bir çekilişten seyahat çıksa, biletin hangi ülkeye ya da şehre kesilmesini istersin?", "Küçüklük hayalin hangi meslekti?", "Yarın ne için heyecanlanıyorsun? (Küçük bile olsa)", "Favori oyunun ne?", "Genelde hangi saatlerde en verimlisin?", "Ajanda kullanmayı sever misin?", "Hayatında, bir yıl önceki kendine anlatsan asla inanmayacağı bir olay var mı?", "Şansın olsa yurt dışında yaşar mıydın?", "Şu an en çok vakit geçirdiğin 3 kişi kim?", "Burcunu seviyor musun? İlgin var mı?", "Şu an en büyük ihtiyacın ne?", "Kitap okumak mı, film izlemek mi?", "Bu aralar diline dolanan ve sürekli mırıldandığın o şarkı hangisi?", "Son birkaç ayda en çok zaman geçirdiğin kişi kim?", "Gardırobuna bu ay eklediğin ya da eklemek istediğin ilk parça ne?", "Son zamanlarda dışarıda yediğin ve “Bunu evde kesin denemeliyim” dediğin yemek ya da tatlı neydi?", "Şu sıralar telefonunda en çok hangi uygulamada vakit öldürüyorsun?", "Bu ay içinde aldığın ve seni en çok heyecanlandıran haber neydi?", "Son günlerde keşfettiğin, “Bunu kesin izlemeliyim” dediğin bir şey var mı?", "Akşamları dışarı çıkarken yapmayı en sevdiğin kombin hangisi?", "Konserine gitmek isteyeceğin dünyaca ünlü isim kim?", "Son zamanlarda bıkmadan, üst üste dinlediğin bir podcast bölümü ya da video oldu mu?", "Bu ay neyi denemek istiyorsun?", "Bu ay plansız, tamamen spontane gelişen en güzel an neydi?", "Yakın zamanda aldığın ve “İyi ki paraya kıyıp almışım” dediğin şey ne?", "Bu aralar sabahları yataktan daha enerjik kalkmanı sağlayan şey ne?", "Son günlerde arkadaş ortamında en çok hangi konuyu döndürdünüz?", "Favori yaz meyven ne?", "En çok zaman geçirdiğin yer neresi?", "Bu mevsimin sonuna kadar yapmak için kendine bir hedef koy.", "Şu an çekmecende veya masanda duran, atılması gereken ama kıyamadığın o gereksiz şey ne?", "Bu aralar yoldayken arkada ne çalıyor?", "Bu ay sabırsızlıkla beklediğin şey ne?", "Gelecek ay kesinlikle yapman gereken şey ne?", "Favori yaz aktiviten ne?", "Yazın en çok giydiğin renk ne?", "Bu aralar çevrenden aldığın en güzel iltifat neydi?", "İzlemeyi bırakamadığın dizi hangisi?", "Yakın zamanda bir tatil planın var mı, varsa nereye?", "Favori yaz içeceğin ne?", "Gelecek yaza bir cümle bırak.", "Babana ne sormak isterdin?", "Neyi halletmek için biraz daha zamana ihtiyacın var?", "Hangi ünlüyle röportaj yapmak isterdin?", "Hangi sorunun sana sorulmasından çekiniyorsun?", "En son hangi konsere kiminle gittin?", "En son hangi şarkıyı dinledin?", "Geçen aydan çıkardığın bir ders oldu mu?", "Üç kelimeyle arkadaş ortamını anlat.", "Bir isteğin anında gerçekleşecek olsa ne dilerdin?", "Son zamanlarda gereksiz olduğunu bildiğin hâlde aldığın o şey ne?", "Bugünü hatırlatan bir kelime yaz.", "Hatırladığın en son rüya neydi?", "Bugüne dair neyi hatırlamak istersin?", "Kendini en huzurlu hissettiğin yer neresi?", "Pazar sabahları yapmaktan en çok hoşlandığın şey nedir?", "Geçmişte çok istediğin ama artık önemsiz olan şey ne?", "İnsanların sana en çok hangi soruyu sormasını seviyorsun?", "Şu an için en büyük beklentin nedir?", "Bugün sana ilham olan bir olay oldu mu?", "En sevdiğin tatlı hangisi?", "Bugün nasıl daha iyi olabilirdi?", "En son izlediğin film hangisi?", "Kendinle özdeşleştirdiğin bir şarkı var mı?", "Bu aralar önündeki en büyük engel ne?", "Bugün enerjini en çok ne düşürdü?", "Bugün hangi duygun baskındı?", "Bu ayın en güzel anları nelerdi?", "Bu aralar en çok hangi sanatçıyı dinliyorsun?", "Bu yıl bir film olsa filmin adı ne olurdu?", "Bu hafta kendine karşı nasıl daha nazik olabilirdin?", "Son zamanlarda “hayır” demek isteyip “evet” dediğin bir şey oldu mu?", "Bu aralar seni en çok neyin yorduğunu fark ettin?", "Bir yıl sonraki kendine şimdiden ne söylemek isterdin?", "Son zamanlarda fikrini değiştirdiğin bir konu var mı?", "Hangi alışkanlığın sana en çok iyi geliyor, neden?", "Bugün yaptığın küçük ama önemli bir seçim neydi?", "Kendinde geliştirmek istediğin tek bir şeyi seçsen ne olurdu?", "En son ne zaman konfor alanının dışına çıktın?", "Seni korkutan ama yine de yapmak istediğin bir şey var mı?", "Hayatında sınır koyman gereken bir alan var mı?", "Başaramasan bile denemeye değer bulduğun bir hayalin ne?", "Kendine en çok hangi konuda haksızlık ediyorsun?", "Bir arkadaşın senin yerinde olsa ona ne tavsiye ederdin?", "Son zamanlarda kendinle ilgili öğrendiğin yeni bir şey ne?", "Enerjini artıran üç şeyi yaz.", "Birine imrendiğin oldu mu? Bu sana aslında neyi istediğini söylüyor?", "Geçmişteki kendini hangi konuda affetmek istersin?", "Bu ay bıraktığın ya da bırakmak istediğin bir şey ne?", "Seni sen yapan değerlerden üçünü yaz.", "Mükemmel olması gerekmeyen ama başlaman gereken bir iş var mı?", "Son zamanlarda en çok hangi konuda kendine güvendin?", "Mutlu bir günün tarifini yazsan içinde neler olurdu?", "Hayatında şu an “yeterince iyi” olan bir şey ne?", "Kendine en son ne zaman gerçekten dinlenme izni verdin?", "Hangi duyguyu daha sık yaşamak istersin?", "Şu an hayatında neyi kontrol edebiliyorsun, neyi edemiyorsun?", "Sana iyi gelen bir sözü ya da cümleyi yaz.", "Önümüzdeki hafta seni mutlu edecek küçük bir plan yap.", "Erteleyip durduğun bir iş var mı? Seni gerçekten ne durduruyor?", "Kendine bir mektup yazsan ilk cümlesi ne olurdu?", "Beş yıl sonra sıradan bir gününün nasıl geçmesini isterdin?", "Son zamanlarda kendinle gurur duyduğun küçük bir an neydi?", "Hayatından neyi azaltsan daha hafif hissederdin?", "Sevdiğin insanlara daha çok göstermek istediğin şey ne?", "Hangi konuda daha sabırlı olmak istersin?", "Bugün bedenin sana ne söyledi?", "Hata yaptığında kendinle nasıl konuşuyorsun?", "Bir zamanlar bırakıp yeniden başlamak istediğin bir uğraş var mı?", "Seni en çok ne rahatlatır?", "Son zamanlarda birinin gününü güzelleştirdin mi?", "Hangi anlarda zamanın nasıl geçtiğini fark etmiyorsun?", "Bu yılın kalanı için bir kelime seçsen ne olurdu?", "Senin için başarı ne demek?", "Son zamanlarda aldığın en iyi tavsiye neydi?", "Kendinde yeni yeni sevmeye başladığın bir özellik var mı?", "Bir gününü tekrar yaşayabilsen hangisini seçerdin?", "Seni gerçekten dinlendiren şeylerle sadece oyalayan şeyler hangileri?", "Bu hafta kime teşekkür etmek istersin?", "Kendi hızında ilerlemeye izin verdiğin bir alan var mı?", "Geçen yılın bu zamanından bu yana nasıl değiştin?", "Hayallerinden birini küçük adımlara bölsen ilk adım ne olurdu?", "Bugün neyi akışına bırakabilirsin?", "Hangi rutinin seni en çok sakinleştiriyor?", "Kendine verdiğin bir sözü tuttuğun son an neydi?", "Hayatındaki hangi insan sana kendini en çok “sen” gibi hissettiriyor?", "Bu ay kendin için yaptığın en iyi şey neydi?"];
-function emptyDay(date){return {date:date,checks:{},hobby:null,hobbyDone:false,entries:[],photos:[],note:'',gratitude:['','',''],topic:null,topicText:'',mood:null,energy:null,pages:0,bookId:null,bed:'',wake:''};}
-function normDay(raw,date){const d=emptyDay(date);if(!raw)return d;return {date:date,checks:Object.assign({},raw.checks||{}),hobby:raw.hobby||null,hobbyDone:!!raw.hobbyDone,entries:Array.isArray(raw.entries)?raw.entries.map(x=>Object.assign({},x)):[],photos:Array.isArray(raw.photos)?raw.photos.slice():[],note:typeof raw.note==='string'?raw.note:'',gratitude:[0,1,2].map(i=>(Array.isArray(raw.gratitude)&&raw.gratitude[i])||''),topic:raw.topic&&raw.topic.q?{q:String(raw.topic.q)}:null,topicText:typeof raw.topicText==='string'?raw.topicText:'',mood:lv(raw.mood),energy:lv(raw.energy),pages:Math.max(0,Math.min(5000,parseInt(raw.pages,10)||0)),bookId:raw.bookId?String(raw.bookId):null,bed:/^\d{2}:\d{2}$/.test(raw.bed)?raw.bed:'',wake:/^\d{2}:\d{2}$/.test(raw.wake)?raw.wake:''};}
+function emptyDay(date){return {date:date,checks:{},hobby:null,hobbyDone:false,entries:[],photos:[],note:'',gratitude:['','',''],topic:null,topicText:'',mood:null,energy:null,pages:0,bookId:null,bed:'',wake:'',plan:[]};}
+function normDay(raw,date){const d=emptyDay(date);if(!raw)return d;return {date:date,checks:Object.assign({},raw.checks||{}),hobby:raw.hobby||null,hobbyDone:!!raw.hobbyDone,entries:Array.isArray(raw.entries)?raw.entries.map(x=>Object.assign({},x)):[],photos:Array.isArray(raw.photos)?raw.photos.slice():[],note:typeof raw.note==='string'?raw.note:'',gratitude:[0,1,2].map(i=>(Array.isArray(raw.gratitude)&&raw.gratitude[i])||''),topic:raw.topic&&raw.topic.q?{q:String(raw.topic.q)}:null,topicText:typeof raw.topicText==='string'?raw.topicText:'',mood:lv(raw.mood),energy:lv(raw.energy),pages:Math.max(0,Math.min(5000,parseInt(raw.pages,10)||0)),bookId:raw.bookId?String(raw.bookId):null,bed:/^\d{2}:\d{2}$/.test(raw.bed)?raw.bed:'',wake:/^\d{2}:\d{2}$/.test(raw.wake)?raw.wake:'',plan:normPlan(raw.plan)};}
 function lv(v){v=parseInt(v,10);return v>=1&&v<=5?v:null;}
 
-const S={db:null,uid:null,assets:null,date:todayStr(),day:emptyDay(todayStr()),settings:{routines:ROUTINES_DEFAULT.slice(),hobbies:HOBBIES_DEFAULT.slice()},view:'today',entryType:'task',unsubDay:null,pending:null,timer:null,month:null,monthDocs:{},history:null,uploading:0,monthly:{},shelf:{books:[],films:[],series:[]},reviews:{},works:[],cabinet:[],wish:{},letters:[],bingo:{}};
+const S={db:null,uid:null,assets:null,date:todayStr(),day:emptyDay(todayStr()),settings:{routines:ROUTINES_DEFAULT.slice(),hobbies:HOBBIES_DEFAULT.slice()},view:'today',entryType:'task',unsubDay:null,pending:null,timer:null,month:null,monthDocs:{},history:null,uploading:0,monthly:{},shelf:{books:[],films:[],series:[]},reviews:{},works:[],cabinet:[],wish:{},letters:[],bingo:{},shop:[],dreams:[],vision:{title:'',items:[]},quran:{s:{},rounds:{m:0,t:0}}};
 
 /* ---------- storage ---------- */
 function setStatus(t,warn){const s=$('status');s.textContent=t;s.classList.toggle('warn',!!warn);}
@@ -1054,7 +1200,7 @@ async function boot(){
     if(st.v===PLAN_VERSION&&Array.isArray(st.routines))S.settings={routines:st.routines,hobbies:hob};
     else{S.settings={routines:ROUTINES_DEFAULT.slice(),hobbies:hob};saveSettings();}
   }}catch(e){}
-  try{S.lastBackup=(await idb.get('kv','lastBackup'))||null;S.dayCount=await idb.count('days');S.monthly=(await idb.get('kv','monthly'))||{};S.extraQ=(await idb.get('kv','questionsExtra'))||[];S.shelf=normShelf(await idb.get('kv','shelf'));S.reviews=(await idb.get('kv','reviews'))||{};S.works=normWorks(await idb.get('kv','works'));S.wish=normWish(await idb.get('kv','wish'));S.letters=normLetters(await idb.get('kv','letters'));S.bingo=normBingo(await idb.get('kv','bingo'));const cab=await idb.get('kv','cabinet');if(cab===undefined){S.cabinet=CAB_SEED.map(([n,c,u])=>({id:'k-'+uid6(),name:n,brand:'',cat:c,use:u,opened:'',pao:0,expiry:'',status:'using',finished:'',note:''}));try{await idb.put('kv',S.cabinet,'cabinet');}catch(e){}}else S.cabinet=normCabinet(cab);}catch(e){}
+  try{S.lastBackup=(await idb.get('kv','lastBackup'))||null;S.dayCount=await idb.count('days');S.monthly=(await idb.get('kv','monthly'))||{};S.extraQ=(await idb.get('kv','questionsExtra'))||[];S.shelf=normShelf(await idb.get('kv','shelf'));S.reviews=(await idb.get('kv','reviews'))||{};S.works=normWorks(await idb.get('kv','works'));S.wish=normWish(await idb.get('kv','wish'));S.letters=normLetters(await idb.get('kv','letters'));S.bingo=normBingo(await idb.get('kv','bingo'));S.shop=normShop(await idb.get('kv','shop'));S.dreams=normDreams(await idb.get('kv','dreams'));S.vision=normVision(await idb.get('kv','vision'));S.quran=normQuran(await idb.get('kv','quran'));const cab=await idb.get('kv','cabinet');if(cab===undefined){S.cabinet=CAB_SEED.map(([n,c,u])=>({id:'k-'+uid6(),name:n,brand:'',cat:c,use:u,opened:'',pao:0,expiry:'',status:'using',finished:'',note:''}));try{await idb.put('kv',S.cabinet,'cabinet');}catch(e){}}else S.cabinet=normCabinet(cab);}catch(e){}
   initNotices();await loadDay(S.date);renderAll();setStatus('Hazır');maybeCover();
   try{if(navigator.storage&&navigator.storage.persist&&!(await navigator.storage.persisted()))await navigator.storage.persist();}catch(e){}
   if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('./sw.js').catch(()=>{});
@@ -2219,6 +2365,424 @@ function applyMode(){
 async function setMode(v){modePref=v;applyMode();try{await idb.put('kv',v,'mode');}catch(e){}}
 darkMQ.addEventListener('change',()=>{if(modePref==='auto')applyMode();});
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#modeBtn');if(b)setMode(isDark()?'light':'dark');});
+/* ---------- v12: alışveriş, hayaller, vision board, zaman çarkı ---------- */
+const tl=n=>new Intl.NumberFormat('tr-TR',{maximumFractionDigits:2}).format(n)+' ₺';
+const okUrl=u=>{try{const x=new URL(u);return x.protocol==='https:'||x.protocol==='http:';}catch(e){return false;}};
+function radioChips(label,opts,cur,onPick){
+  const g=el('div',{class:'chips',role:'radiogroup','aria-label':label});
+  opts.forEach(([v,l,dot])=>g.append(el('button',{type:'button',class:'chipf','aria-pressed':cur===v?'true':'false',role:'radio','aria-checked':cur===v?'true':'false',onclick:()=>onPick(v)},dot?el('span',{class:'cdot',style:'background:'+dot,'aria-hidden':'true'}):null,l)));
+  return g;
+}
+async function addPhotoFrom(files,max){try{return await storeImage(files[0],max||1400);}catch(e){mediaErr(e);return null;}}
+
+/* ===== Alışveriş listem ===== */
+const SHOP_CATS=['Giyim','Ayakkabı & çanta','Kitap','Ev','Bakım & makyaj','Hobi','Teknoloji','Hediye','Diğer'];
+function normShop(x){return Array.isArray(x)?x.filter(i=>i&&i.id&&i.name).map(i=>({id:String(i.id),name:String(i.name).slice(0,160),price:Number.isFinite(+i.price)&&i.price!==''&&i.price!=null?Math.max(0,+i.price):null,link:okUrl(i.link)?String(i.link):'',cat:SHOP_CATS.includes(i.cat)?i.cat:'Diğer',photo:i.photo?String(i.photo):null,want:i.want===2?2:1,note:String(i.note||''),created:/^\d{4}-\d{2}-\d{2}$/.test(i.created)?i.created:todayStr(),bought:!!i.bought,boughtDate:/^\d{4}-\d{2}-\d{2}$/.test(i.boughtDate)?i.boughtDate:''})):[];}
+async function saveShop(){try{await idb.put('kv',S.shop,'shop');setStatus('Kaydedildi');}catch(e){setStatus('Kaydedilemedi',true);}}
+let shopFilter='Tümü',shopAdd=false,shopShowBought=false,shopDraft=null;
+function renderShop(){
+  const B=$('shopBody');B.replaceChildren();
+  const open=S.shop.filter(i=>!i.bought),bought=S.shop.filter(i=>i.bought);
+  const sum=open.reduce((a,i)=>a+(i.price||0),0),priced=open.filter(i=>i.price!=null).length;
+  const head=el('section',{class:'card shop-head'},
+    el('div',{class:'cardhead'},el('h2',{text:'Alışveriş listem'}),el('span',{class:'count',text:open.length+' ürün'})),
+    el('div',{class:'shop-total'},el('b',{text:priced?tl(sum):'—'}),el('span',{text:priced?(priced<open.length?'fiyatı yazılı '+priced+' ürünün toplamı':'listendeki her şeyin toplamı'):'Fiyat eklersen toplamı burada görürsün'})));
+  const addBtn=el('button',{type:'button',class:'btn','aria-expanded':shopAdd?'true':'false',onclick:()=>{shopAdd=!shopAdd;renderShop();if(shopAdd)setTimeout(()=>{const f=$('shopName');if(f)f.focus();},30);}},shopAdd?'Vazgeç':'Ürün ekle');
+  head.append(addBtn);
+  if(shopAdd){
+    const d=shopDraft||(shopDraft={name:'',price:'',link:'',cat:'Diğer',want:1,photo:null});
+    const nm=el('input',{class:'field',id:'shopName',maxlength:'160',placeholder:'ör. Kahverengi deri çanta',value:d.name});nm.addEventListener('input',()=>d.name=nm.value);
+    const pr=el('input',{class:'field',type:'number',inputmode:'decimal',min:'0',step:'0.01',placeholder:'ör. 1250',value:d.price});pr.addEventListener('input',()=>d.price=pr.value);
+    const ln=el('input',{class:'field',type:'url',inputmode:'url',placeholder:'https://…',value:d.link});ln.addEventListener('input',()=>d.link=ln.value.trim());
+    const cs=el('select',{class:'field','aria-label':'Kategori'});SHOP_CATS.forEach(c=>{const o=el('option',{value:c,text:c});if(c===d.cat)o.selected=true;cs.append(o);});cs.addEventListener('change',()=>d.cat=cs.value);
+    const ph=el('div',{class:'row'},d.photo?photoImg(d.photo,{class:'shop-thumb',alt:''}):null,fileButton(d.photo?'Fotoğrafı değiştir':'Fotoğraf ekle','image/*',false,async fs=>{const id=await addPhotoFrom(fs,1000);if(id){if(d.photo)dropMedia(d.photo);d.photo=id;renderShop();}}));
+    const f=el('form',{class:'fmts shop-form'},
+      el('label',{class:'fl'},'Ürün',nm),
+      el('div',{class:'row2'},el('label',{class:'fl'},'Fiyat (₺)',pr),el('label',{class:'fl'},'Kategori',cs)),
+      el('label',{class:'fl'},'Link (isteğe bağlı)',ln),
+      el('div',{class:'fl'},el('span',{text:'Ne kadar istiyorsun?'}),radioChips('Ne kadar istiyorsun',[[1,'Olabilir'],[2,'Çok istiyorum']],d.want,v=>{d.want=v;renderShop();})),
+      ph,el('button',{class:'btn',type:'submit'},'Listeye ekle'));
+    f.addEventListener('submit',async e=>{e.preventDefault();if(!d.name.trim()){nm.focus();return;}
+      if(d.link&&!okUrl(d.link)){toast('Link https:// ile başlamalı.');ln.focus();return;}
+      S.shop.unshift({id:'s-'+uid6(),name:d.name.trim(),price:d.price===''?null:Math.max(0,+d.price),link:d.link,cat:d.cat,photo:d.photo,want:d.want,note:'',created:todayStr(),bought:false,boughtDate:''});
+      shopDraft=null;shopAdd=false;await saveShop();renderShop();toast('Listene eklendi');});
+    head.append(f);
+  }
+  B.append(head);
+  const cats=['Tümü'].concat(SHOP_CATS.filter(c=>open.some(i=>i.cat===c)));
+  if(!cats.includes(shopFilter))shopFilter='Tümü';
+  if(cats.length>2)B.append(radioChips('Kategoriye göre süz',cats.map(c=>[c,c]),shopFilter,v=>{shopFilter=v;renderShop();}));
+  const list=open.filter(i=>shopFilter==='Tümü'||i.cat===shopFilter).sort((a,b)=>b.want-a.want||(a.created<b.created?1:-1));
+  const sec=el('section',{class:'card'});
+  if(!open.length)sec.append(el('p',{class:'empty',text:'Almak istediğin şeyleri buraya yaz. Bir süre listede beklemek, gerçekten isteyip istemediğini anlamana da yardım eder.'}));
+  list.forEach(i=>sec.append(shopRow(i)));
+  if(open.length)B.append(sec);
+  if(bought.length){
+    const spent=bought.reduce((a,i)=>a+(i.price||0),0);
+    const bs=el('section',{class:'card rgroup'+(shopShowBought?' open':'')},el('button',{type:'button',class:'rg-head','aria-expanded':shopShowBought?'true':'false',onclick:()=>{shopShowBought=!shopShowBought;renderShop();}},el('span',{class:'rg-name',text:'Aldıklarım'}),el('span',{class:'rg-count',text:bought.length+(spent?' · '+tl(spent):'')}),el('span',{class:'rg-chev','aria-hidden':'true'})));
+    if(shopShowBought)bought.sort((a,b)=>a.boughtDate<b.boughtDate?1:-1).forEach(i=>bs.append(shopRow(i)));
+    B.append(bs);
+  }
+}
+function shopRow(i){
+  const days=dayDiff(i.created,todayStr());
+  const meta=[i.cat,i.bought?(i.boughtDate?fmtDay(i.boughtDate)+' alındı':'alındı'):(days<=0?'bugün eklendi':days+' gündür listende')].join(' · ');
+  const thumb=i.photo?photoImg(i.photo,{class:'shop-thumb',alt:''}):el('span',{class:'shop-thumb ph','aria-hidden':'true',text:i.name.trim().charAt(0).toLocaleUpperCase('tr-TR')});
+  const main=el('button',{type:'button',class:'shop-main',onclick:()=>openShopItem(i)},el('b',{text:i.name}),el('small',{text:meta}));
+  const right=el('div',{class:'shop-right'},i.price!=null?el('span',{class:'shop-price',text:tl(i.price)}):null,
+    el('button',{type:'button',class:'chipf shop-buy','aria-pressed':i.bought?'true':'false',onclick:async()=>{i.bought=!i.bought;i.boughtDate=i.bought?todayStr():'';await saveShop();renderShop();if(i.bought)toast('Güle güle kullan!');}},i.bought?'Alındı ✓':'Aldım'));
+  return el('div',{class:'shop-row'+(i.want===2?' want':'')+(i.bought?' bought':'')},thumb,main,right,
+    i.link?el('a',{class:'shop-link',href:i.link,target:'_blank',rel:'noopener noreferrer','aria-label':i.name+' ürün sayfası'},'Ürüne git ↗'):null);
+}
+function openShopItem(i){
+  openSheet(i.name,body=>{
+    const nm=el('input',{class:'field',maxlength:'160',value:i.name});
+    const pr=el('input',{class:'field',type:'number',inputmode:'decimal',min:'0',step:'0.01',value:i.price==null?'':String(i.price)});
+    const ln=el('input',{class:'field',type:'url',inputmode:'url',value:i.link,placeholder:'https://…'});
+    const cs=el('select',{class:'field'});SHOP_CATS.forEach(c=>{const o=el('option',{value:c,text:c});if(c===i.cat)o.selected=true;cs.append(o);});
+    const no=el('textarea',{class:'field',rows:'3',placeholder:'Beden, renk, hangi mağazada…'});no.value=i.note;
+    const commit=async()=>{i.name=nm.value.trim()||i.name;i.price=pr.value===''?null:Math.max(0,+pr.value);const l=ln.value.trim();i.link=okUrl(l)?l:'';i.cat=cs.value;i.note=no.value;await saveShop();renderShop();};
+    [nm,pr,ln,cs,no].forEach(x=>x.addEventListener('change',commit));
+    body.append(el('div',{class:'row'},i.photo?photoImg(i.photo,{class:'shop-big',alt:i.name}):null),
+      el('div',{class:'row'},fileButton(i.photo?'Fotoğrafı değiştir':'Fotoğraf ekle','image/*',false,async fs=>{const id=await addPhotoFrom(fs,1000);if(id){if(i.photo)dropMedia(i.photo);i.photo=id;await saveShop();renderShop();refreshSheet();}})),
+      el('label',{class:'fl'},'Ürün',nm),el('div',{class:'row2'},el('label',{class:'fl'},'Fiyat (₺)',pr),el('label',{class:'fl'},'Kategori',cs)),
+      el('label',{class:'fl'},'Link',ln),
+      el('div',{class:'fl'},el('span',{text:'Ne kadar istiyorsun?'}),radioChips('Ne kadar istiyorsun',[[1,'Olabilir'],[2,'Çok istiyorum']],i.want,async v=>{i.want=v;await saveShop();renderShop();refreshSheet();})),
+      el('label',{class:'fl'},'Not',no),
+      el('div',{class:'row'},confirmBtn('Listeden sil',async()=>{S.shop=S.shop.filter(x=>x.id!==i.id);if(i.photo)dropMedia(i.photo);await saveShop();closeSheet();renderShop();})));
+  });
+}
+
+/* ===== Hayallerim ===== */
+const DREAM_AREAS=[['seyahat','Seyahat'],['kariyer','Kariyer & okul'],['ev','Ev & yaşam'],['kendim','Kendim'],['sevdiklerim','Sevdiklerim'],['deneyim','Deneyim'],['para','Birikim'],['diger','Diğer']];
+const areaName=a=>(DREAM_AREAS.find(x=>x[0]===a)||DREAM_AREAS[7])[1];
+function normDreams(x){return Array.isArray(x)?x.filter(d=>d&&d.id&&d.text).map(d=>({id:String(d.id),text:String(d.text).slice(0,200),area:DREAM_AREAS.some(a=>a[0]===d.area)?d.area:'diger',why:String(d.why||''),steps:Array.isArray(d.steps)?d.steps.filter(s=>s&&s.text).map(s=>({id:String(s.id||uid6()),text:String(s.text).slice(0,160),done:!!s.done})):[],photo:d.photo?String(d.photo):null,done:!!d.done,doneDate:/^\d{4}-\d{2}-\d{2}$/.test(d.doneDate)?d.doneDate:'',created:/^\d{4}-\d{2}-\d{2}$/.test(d.created)?d.created:todayStr()})):[];}
+async function saveDreams(){try{await idb.put('kv',S.dreams,'dreams');setStatus('Kaydedildi');}catch(e){setStatus('Kaydedilemedi',true);}}
+let dreamFilter='hepsi',dreamAdd=false,dreamDraft=null;
+function renderDreams(){
+  const B=$('dreamBody');B.replaceChildren();
+  const open=S.dreams.filter(d=>!d.done),done=S.dreams.filter(d=>d.done);
+  const head=el('section',{class:'card dream-head'},el('div',{class:'cardhead'},el('h2',{text:'Hayallerim'}),el('span',{class:'count',text:done.length?done.length+' gerçekleşti':''})),
+    el('p',{class:'muted',style:'margin:0',text:'Büyük ya da küçük, ne hayal ediyorsan yaz. Her birine küçük bir ilk adım eklemek onu yaklaştırır.'}));
+  head.append(el('button',{type:'button',class:'btn','aria-expanded':dreamAdd?'true':'false',onclick:()=>{dreamAdd=!dreamAdd;renderDreams();if(dreamAdd)setTimeout(()=>{const f=$('dreamText');if(f)f.focus();},30);}},dreamAdd?'Vazgeç':'Hayal ekle'));
+  if(dreamAdd){
+    const d=dreamDraft||(dreamDraft={text:'',area:'seyahat',why:''});
+    const t=el('input',{class:'field',id:'dreamText',maxlength:'200',placeholder:'ör. Kapadokya’da balona binmek',value:d.text});t.addEventListener('input',()=>d.text=t.value);
+    const w=el('textarea',{class:'field',rows:'2',placeholder:'Bu hayal sana ne hissettiriyor?'});w.value=d.why;w.addEventListener('input',()=>d.why=w.value);
+    const f=el('form',{class:'fmts'},el('label',{class:'fl'},'Hayalim',t),el('div',{class:'fl'},el('span',{text:'Alan'}),radioChips('Alan',DREAM_AREAS,d.area,v=>{d.area=v;renderDreams();})),el('label',{class:'fl'},'Neden istiyorum? (isteğe bağlı)',w),el('button',{class:'btn',type:'submit'},'Ekle'));
+    f.addEventListener('submit',async e=>{e.preventDefault();if(!d.text.trim()){t.focus();return;}S.dreams.unshift({id:'d-'+uid6(),text:d.text.trim(),area:d.area,why:d.why.trim(),steps:[],photo:null,done:false,doneDate:'',created:todayStr()});dreamDraft=null;dreamAdd=false;await saveDreams();renderDreams();});
+    head.append(f);
+  }
+  B.append(head);
+  const areas=DREAM_AREAS.filter(a=>open.some(d=>d.area===a[0]));
+  if(areas.length>1)B.append(radioChips('Alana göre süz',[['hepsi','Hepsi']].concat(areas),dreamFilter,v=>{dreamFilter=v;renderDreams();}));
+  if(dreamFilter!=='hepsi'&&!areas.some(a=>a[0]===dreamFilter))dreamFilter='hepsi';
+  if(!S.dreams.length)B.append(el('section',{class:'card'},el('p',{class:'empty',text:'Henüz bir hayal yok. İlkini ekle; gitmek istediğin bir yer, öğrenmek istediğin bir şey, olmak istediğin biri…'})));
+  open.filter(d=>dreamFilter==='hepsi'||d.area===dreamFilter).forEach(d=>B.append(dreamCard(d)));
+  if(done.length){B.append(el('h3',{class:'dream-sec',text:'Gerçekleşenler'}));done.sort((a,b)=>a.doneDate<b.doneDate?1:-1).forEach(d=>B.append(dreamCard(d)));}
+}
+function dreamCard(d){
+  const c=el('section',{class:'card dream'+(d.done?' done':'')});
+  if(d.photo)c.append(el('button',{type:'button',class:'dream-photo',onclick:()=>openDream(d),'aria-label':d.text+' hayalini düzenle'},photoImg(d.photo,{alt:''})));
+  c.append(el('div',{class:'dream-top'},el('span',{class:'dream-area',text:areaName(d.area)}),el('button',{type:'button',class:'link',onclick:()=>openDream(d)},'Düzenle')));
+  c.append(el('h3',{class:'dream-t',text:d.text}));
+  if(d.why)c.append(el('p',{class:'dream-why',text:d.why}));
+  if(d.done){c.append(el('p',{class:'dream-done',text:'✦ '+(d.doneDate?fmtDay(d.doneDate)+' gerçekleşti':'Gerçekleşti')}));return c;}
+  const n=d.steps.length,k=d.steps.filter(s=>s.done).length;
+  if(n)c.append(el('div',{class:'progress','aria-hidden':'true'},el('span',{style:'width:'+Math.round(k/n*100)+'%'})));
+  const ul=el('ul',{class:'checks'});
+  d.steps.forEach(s=>{const id='ds-'+s.id,inp=el('input',{type:'checkbox',id:id});inp.checked=s.done;
+    inp.addEventListener('change',async()=>{s.done=inp.checked;await saveDreams();renderDreams();});
+    ul.append(el('li',null,el('label',{class:'check',for:id},inp,boxEl(),el('span',{class:'rt'},el('span',{text:s.text}))),el('button',{class:'del',type:'button','aria-label':s.text+' adımını sil',onclick:async()=>{d.steps=d.steps.filter(x=>x.id!==s.id);await saveDreams();renderDreams();}},'×')));});
+  c.append(ul);
+  const si=el('input',{class:'field',maxlength:'160',placeholder:n?'Sonraki adım…':'İlk küçük adım ne olabilir?','aria-label':'Adım ekle'});
+  const f=el('form',{class:'addrow'},si,el('button',{class:'btn ghost',type:'submit'},'Ekle'));
+  f.addEventListener('submit',async e=>{e.preventDefault();const v=si.value.trim();if(!v)return;d.steps.push({id:uid6(),text:v,done:false});await saveDreams();renderDreams();const nf=document.querySelector('[data-dream="'+d.id+'"] .addrow input');if(nf)nf.focus();});
+  c.dataset.dream=d.id;c.append(f);
+  c.append(el('div',{class:'row'},el('span',{class:'muted dream-n',text:n?k+'/'+n+' adım':''}),el('button',{type:'button',class:'btn ghost dream-yes',onclick:async()=>{d.done=true;d.doneDate=todayStr();await saveDreams();renderDreams();toast('Bir hayalin gerçekleşti, tebrikler!');}},'Gerçekleşti ✦')));
+  return c;
+}
+function openDream(d){
+  openSheet('Hayalim',body=>{
+    const t=el('input',{class:'field',maxlength:'200',value:d.text});
+    const w=el('textarea',{class:'field',rows:'3'});w.value=d.why;
+    const commit=async()=>{d.text=t.value.trim()||d.text;d.why=w.value.trim();await saveDreams();renderDreams();};
+    t.addEventListener('change',commit);w.addEventListener('change',commit);
+    const onBoard=d.photo&&S.vision.items.some(x=>x.photo===d.photo);
+    body.append(d.photo?photoImg(d.photo,{class:'shop-big',alt:''}):el('span'),
+      el('div',{class:'row'},fileButton(d.photo?'Görseli değiştir':'Görsel ekle','image/*',false,async fs=>{const id=await addPhotoFrom(fs,1400);if(id){if(d.photo&&!S.vision.items.some(x=>x.photo===d.photo))dropMedia(d.photo);d.photo=id;await saveDreams();renderDreams();refreshSheet();}}),
+        d.photo?el('button',{type:'button',class:'btn ghost',disabled:onBoard,onclick:async()=>{await addVisionImageId(d.photo,d.text);refreshSheet();toast('Vision board’a eklendi');}},onBoard?'Board’da ✓':'Vision board’a ekle'):null),
+      el('label',{class:'fl'},'Hayalim',t),el('div',{class:'fl'},el('span',{text:'Alan'}),radioChips('Alan',DREAM_AREAS,d.area,async v=>{d.area=v;await saveDreams();renderDreams();refreshSheet();})),
+      el('label',{class:'fl'},'Neden istiyorum?',w),
+      el('div',{class:'row'},d.done?el('button',{type:'button',class:'btn ghost',onclick:async()=>{d.done=false;d.doneDate='';await saveDreams();renderDreams();closeSheet();}},'Henüz gerçekleşmedi'):null,
+        confirmBtn('Hayali sil',async()=>{S.dreams=S.dreams.filter(x=>x.id!==d.id);if(d.photo&&!S.vision.items.some(x=>x.photo===d.photo))dropMedia(d.photo);await saveDreams();closeSheet();renderDreams();})));
+  });
+}
+
+/* ===== Vision board ===== */
+function normVision(x){const v=x&&typeof x==='object'?x:{};return {title:String(v.title||''),items:Array.isArray(v.items)?v.items.filter(i=>i&&i.id&&(i.photo||i.text)).map(i=>({id:String(i.id),kind:i.kind==='word'?'word':'img',photo:i.photo?String(i.photo):null,text:String(i.text||'').slice(0,120),w:+i.w||1,h:+i.h||1,tone:(+i.tone||0)%4})):[]};}
+async function saveVision(){try{await idb.put('kv',S.vision,'vision');setStatus('Kaydedildi');}catch(e){setStatus('Kaydedilemedi',true);}}
+async function imgDims(id){try{const r=await idb.get('photos',id);const b=await createImageBitmap(r.blob);const o={w:b.width,h:b.height};b.close&&b.close();return o;}catch(e){return {w:1,h:1};}}
+async function addVisionImageId(id,text){const d=await imgDims(id);S.vision.items.push({id:'v-'+uid6(),kind:'img',photo:id,text:text||'',w:d.w,h:d.h,tone:0});await saveVision();if(S.view==='vision')renderVision();}
+const vTitle=()=>S.vision.title||(new Date().getFullYear()+' vision board’um');
+function rnd(seed){let s=seed>>>0||1;return()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296;};}
+/* masonry: her öğeyi en kısa sütuna yerleştir */
+function visionLayout(W,cols,gap){
+  const cw=(W-gap*(cols-1))/cols,hs=new Array(cols).fill(0),out=[];
+  S.vision.items.forEach((it,i)=>{
+    let h;if(it.kind==='img')h=cw*Math.min(1.6,Math.max(.6,it.h/it.w))+(it.text?cw*.16:0)+cw*.08;else h=cw*(it.text.length>40?.75:it.text.length>18?.55:.42);
+    let c=0;for(let k=1;k<cols;k++)if(hs[k]<hs[c]-1)c=k;
+    const r=rnd(hashStr(it.id))();out.push({it,x:c*(cw+gap),y:hs[c],w:cw,h,rot:(r-.5)*5,tape:r>.55});hs[c]+=h+gap;});
+  return {cells:out,height:Math.max(0,...hs)-gap};
+}
+function renderVision(){
+  const B=$('visionBody');B.replaceChildren();
+  const tIn=el('input',{class:'vb-title',value:vTitle(),'aria-label':'Board başlığı',maxlength:'60'});
+  tIn.addEventListener('change',async()=>{S.vision.title=tIn.value.trim();await saveVision();});
+  const tools=el('div',{class:'row vb-tools'},
+    fileButton('Görsel ekle','image/*',true,async fs=>{for(const f of fs){try{const id=await storeImage(f,1400);await addVisionImageId(id,'');}catch(e){mediaErr(e);}}renderVision();},'btn filebtn'),
+    el('button',{type:'button',class:'btn ghost',onclick:openVisionWord},'Söz ekle'),
+    el('button',{type:'button',class:'btn ghost',disabled:S.vision.items.length<2,onclick:async()=>{const r=rnd(Date.now());const a=S.vision.items;for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]];}a.forEach(x=>{x.id=x.id.split('~')[0]+'~'+uid6().slice(0,3);});await saveVision();renderVision();}},'Karıştır'));
+  B.append(el('section',{class:'card vb-head'},tIn,el('p',{class:'muted',style:'margin:0',text:'Hayallerini anlatan görselleri ve sözleri ekle; board kendiliğinden dizilir. Bir parçaya dokunarak yazısını değiştirebilir ya da kaldırabilirsin.'}),tools));
+  const wrap=el('section',{class:'vb-board',id:'vbBoard'});
+  if(!S.vision.items.length){wrap.append(el('p',{class:'empty vb-empty',text:'Board’un boş. Telefonundan görsel seç ya da “Söz ekle” ile bir kelime yaz: “Huzur”, “Yeni ev”, “Paris”…'}));B.append(wrap);return;}
+  B.append(wrap);
+  const draw=()=>{const W=wrap.clientWidth-24;if(W<=0)return;const cols=W>620?3:2;const L=visionLayout(W,cols,12);
+    const inner=el('div',{class:'vb-inner',style:'height:'+Math.ceil(L.height+24)+'px'});
+    L.cells.forEach(c=>{const it=c.it;
+      const tile=el('button',{type:'button',class:'vb-tile '+(it.kind==='word'?'word tone'+it.tone:'pic'),style:'left:'+(c.x+12)+'px;top:'+(c.y+12)+'px;width:'+c.w+'px;height:'+c.h+'px;--w:'+c.w.toFixed(1)+'px;transform:rotate('+c.rot.toFixed(2)+'deg)','aria-label':(it.kind==='word'?'Söz: ':'Görsel: ')+(it.text||'açıklamasız')+'. Düzenle',onclick:()=>openVisionItem(it)});
+      if(it.kind==='img'){tile.append(photoImg(it.photo,{alt:''}));if(it.text)tile.append(el('span',{class:'vb-cap',text:it.text}));}
+      else tile.append(el('span',{class:'vb-word',text:it.text}));
+      if(c.tape)tile.append(el('span',{class:'vb-tape','aria-hidden':'true'}));
+      inner.append(tile);});
+    wrap.replaceChildren(inner);};
+  requestAnimationFrame(draw);
+  B.append(el('div',{class:'row vb-dl'},el('button',{type:'button',class:'btn',onclick:downloadVision},'Duvar kağıdı olarak indir'),el('span',{class:'muted',text:'Telefon ekranı boyutunda bir resim olarak kaydeder.'})));
+}
+window.addEventListener('resize',()=>{if(S.view==='vision'){clearTimeout(window._vbT);window._vbT=setTimeout(renderVision,200);}});
+function openVisionWord(){
+  openSheet('Söz ekle',body=>{
+    const t=el('input',{class:'field',maxlength:'120',placeholder:'ör. Huzur, Kendi evim, Her gün biraz daha cesur'});let tone=0;
+    const f=el('form',{class:'fmts'},el('label',{class:'fl'},'Söz ya da kelime',t),el('div',{class:'fl'},el('span',{text:'Renk'}),radioChips('Renk',[[0,'Ayın rengi'],[1,'Altın'],[2,'Koyu'],[3,'Kâğıt']],tone,v=>{tone=v;f.querySelectorAll('.chipf').forEach((b,i)=>{b.setAttribute('aria-pressed',i===v?'true':'false');b.setAttribute('aria-checked',i===v?'true':'false');});})),el('button',{class:'btn',type:'submit'},'Board’a ekle'));
+    f.addEventListener('submit',async e=>{e.preventDefault();const v=t.value.trim();if(!v){t.focus();return;}S.vision.items.push({id:'v-'+uid6(),kind:'word',photo:null,text:v,w:1,h:1,tone:tone});await saveVision();closeSheet();renderVision();});
+    body.append(f);setTimeout(()=>t.focus(),30);
+  });
+}
+function openVisionItem(it){
+  openSheet(it.kind==='word'?'Söz':'Görsel',body=>{
+    const t=el('input',{class:'field',maxlength:'120',value:it.text,placeholder:it.kind==='img'?'ör. Paris, 2027':''});
+    t.addEventListener('change',async()=>{const v=t.value.trim();if(it.kind==='word'&&!v)return;it.text=v;await saveVision();renderVision();});
+    const idx=S.vision.items.indexOf(it);
+    const mv=async d=>{const a=S.vision.items,i=a.indexOf(it),j=i+d;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];await saveVision();renderVision();refreshSheet();};
+    body.append(it.kind==='img'?photoImg(it.photo,{class:'shop-big',alt:''}):el('span'),
+      el('label',{class:'fl'},it.kind==='img'?'Görselin altına yazı (isteğe bağlı)':'Söz',t),
+      el('div',{class:'row'},el('button',{type:'button',class:'btn ghost',disabled:idx<=0,onclick:()=>mv(-1)},'Öne al'),el('button',{type:'button',class:'btn ghost',disabled:idx>=S.vision.items.length-1,onclick:()=>mv(1)},'Arkaya al')),
+      el('div',{class:'row'},confirmBtn('Board’dan kaldır',async()=>{S.vision.items=S.vision.items.filter(x=>x!==it);if(it.photo&&!S.dreams.some(d=>d.photo===it.photo))dropMedia(it.photo);await saveVision();closeSheet();renderVision();})));
+  });
+}
+async function downloadVision(){
+  if(!S.vision.items.length)return;
+  const W=1080,H=1920,cs=getComputedStyle(document.documentElement),v=n=>cs.getPropertyValue(n).trim();
+  const paper=v('--paper')||'#FAFAF7',ink=v('--ink')||'#222',accent=v('--accent')||'#B5541B',gold=v('--gold')||'#B8860B',soft=v('--accent-soft')||'#F5E6D8',goldSoft=v('--gold-soft')||'#F7EBC8',dot=v('--dot')||'#e8e2d8';
+  const hand=getComputedStyle(document.querySelector('h2')).fontFamily,sans=getComputedStyle(document.body).fontFamily;
+  const c=document.createElement('canvas');c.width=W;c.height=H;const g=c.getContext('2d');
+  g.fillStyle=paper;g.fillRect(0,0,W,H);g.fillStyle=dot;for(let y=24;y<H;y+=44)for(let x=24;x<W;x+=44){g.beginPath();g.arc(x,y,2.4,0,7);g.fill();}
+  const top=230,pad=70,availH=H-top-110;
+  g.fillStyle=ink;g.textAlign='center';g.textBaseline='alphabetic';g.font='700 84px '+hand;g.fillText(vTitle(),W/2,170,W-2*pad);
+  let L=visionLayout(W-2*pad,2,28),sc=Math.min(1,availH/L.height);
+  const ox=(W-(W-2*pad)*sc)/2,oy=top+Math.max(0,(availH-L.height*sc)/2);
+  const imgs={};for(const cell of L.cells)if(cell.it.kind==='img'){try{const r=await idb.get('photos',cell.it.photo);imgs[cell.it.id]=await createImageBitmap(r.blob);}catch(e){}}
+  const tones=[[soft,ink],[goldSoft,ink],[ink,paper],['#FFFFFF','#2A2420']];
+  const wrapText=(t,maxW,size,font)=>{g.font=font.replace('S',size);const words=t.split(/\s+/),lines=[];let cur='';words.forEach(w=>{const tr=cur?cur+' '+w:w;if(g.measureText(tr).width>maxW&&cur){lines.push(cur);cur=w;}else cur=tr;});if(cur)lines.push(cur);return lines;};
+  L.cells.forEach(cell=>{const it=cell.it,x=ox+cell.x*sc,y=oy+cell.y*sc,w=cell.w*sc,h=cell.h*sc;
+    g.save();g.translate(x+w/2,y+h/2);g.rotate(cell.rot*Math.PI/180);g.shadowColor='rgba(40,30,20,.22)';g.shadowBlur=18*sc;g.shadowOffsetY=6*sc;
+    if(it.kind==='img'){const fr=w*.04;g.fillStyle='#FBF9F4';g.fillRect(-w/2,-h/2,w,h);g.shadowColor='transparent';
+      const capH=it.text?w*.16:0,ih=h-w*.08-capH;const bm=imgs[it.id];
+      if(bm){const iw=w-fr*2,ar=bm.width/bm.height,tar=iw/ih;let sx=0,sy=0,sw=bm.width,sh=bm.height;if(ar>tar){sw=bm.height*tar;sx=(bm.width-sw)/2;}else{sh=bm.width/tar;sy=(bm.height-sh)/2;}g.drawImage(bm,sx,sy,sw,sh,-w/2+fr,-h/2+fr,iw,ih);}
+      if(it.text){g.fillStyle='#2A2420';g.textAlign='center';g.textBaseline='middle';g.font='700 '+Math.round(w*.085)+'px '+hand;g.fillText(it.text,0,h/2-fr-capH/2,w-fr*4);}}
+    else{const [bg,fg]=tones[it.tone||0];g.fillStyle=bg;const r=14*sc;g.beginPath();g.roundRect(-w/2,-h/2,w,h,r);g.fill();g.shadowColor='transparent';
+      g.fillStyle=fg;g.textAlign='center';g.textBaseline='middle';let size=Math.round(w*.15),lines=wrapText(it.text,w*.82,size,'700 Spx '+hand);
+      while(lines.length*size*1.15>h*.8&&size>18){size-=4;lines=wrapText(it.text,w*.82,size,'700 Spx '+hand);}
+      lines.forEach((ln,k)=>g.fillText(ln,0,(k-(lines.length-1)/2)*size*1.15));}
+    if(cell.tape){g.shadowColor='transparent';g.fillStyle=accent;g.globalAlpha=.35;g.rotate(-.06);g.fillRect(-w*.18,-h/2-12*sc,w*.36,26*sc);g.globalAlpha=1;}
+    g.restore();});
+  g.fillStyle=gold;g.globalAlpha=.8;g.textAlign='center';g.font='600 30px '+sans;g.fillText('Defterim',W/2,H-60);g.globalAlpha=1;
+  const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',.92));
+  if(blob)await saveFile('vision-board-'+todayStr()+'.jpg',blob);
+}
+
+/* ===== Zaman çarkı ===== */
+const WCATS=[[1,'Uyku'],[2,'İş & okul'],[3,'Hareket'],[4,'Yemek'],[5,'Bakım'],[6,'Hobi'],[7,'Sevdiklerim'],[8,'Diğer']];
+const WC_DARK_TEXT=[2,3,4,5];
+const wcName=c=>(WCATS.find(x=>x[0]===c)||WCATS[7])[1];
+const tmin2=t=>{const m=/^(\d{2}):(\d{2})$/.exec(t||'');return m?(+m[1])*60+(+m[2]):null;};
+const mfmt=m=>pad(Math.floor((m%1440)/60))+':'+pad(m%60);
+function normPlan(p){return Array.isArray(p)?p.filter(b=>b&&tmin2(b.s)!=null&&tmin2(b.e)!=null&&b.t).map(b=>({id:String(b.id||uid6()),s:b.s,e:b.e,t:String(b.t).slice(0,60),c:WCATS.some(x=>x[0]===+b.c)?+b.c:8})).slice(0,48):[];}
+const spanOf=b=>{const s=tmin2(b.s);let e=tmin2(b.e);if(e<=s)e+=1440;return [s,e];};
+function planSorted(p){return p.slice().sort((a,b)=>tmin2(a.s)-tmin2(b.s));}
+function overlaps(p){const bad=new Set();for(let i=0;i<p.length;i++)for(let j=i+1;j<p.length;j++){const [a1,a2]=spanOf(p[i]),[b1,b2]=spanOf(p[j]);const hit=(x1,x2,y1,y2)=>x1<y2&&y1<x2;if(hit(a1,a2,b1,b2)||hit(a1+1440,a2+1440,b1,b2)||hit(a1,a2,b1+1440,b2+1440)){bad.add(p[i].id);bad.add(p[j].id);}}return bad;}
+function nowBlock(p){const n=new Date(),m=n.getHours()*60+n.getMinutes();return p.find(b=>{const [s,e]=spanOf(b);return (m>=s&&m<e)||(m+1440>=s&&m+1440<e);});}
+function nextBlock(p){const n=new Date(),m=n.getHours()*60+n.getMinutes();const fut=planSorted(p).filter(b=>tmin2(b.s)>m);return fut[0]||null;}
+function arcPath(cx,cy,r1,r2,a1,a2){const p=(r,a)=>[cx+r*Math.cos(a),cy+r*Math.sin(a)];const large=(a2-a1)>Math.PI?1:0;const [x1,y1]=p(r2,a1),[x2,y2]=p(r2,a2),[x3,y3]=p(r1,a2),[x4,y4]=p(r1,a1);
+  return 'M'+x1.toFixed(2)+' '+y1.toFixed(2)+'A'+r2+' '+r2+' 0 '+large+' 1 '+x2.toFixed(2)+' '+y2.toFixed(2)+'L'+x3.toFixed(2)+' '+y3.toFixed(2)+'A'+r1+' '+r1+' 0 '+large+' 0 '+x4.toFixed(2)+' '+y4.toFixed(2)+'Z';}
+const deg0=a=>a*180/Math.PI;
+const ang=m=>(m/1440)*Math.PI*2-Math.PI/2;
+function wheelSvg(plan,size,opts){
+  opts=opts||{};const NS='http://www.w3.org/2000/svg',cx=size/2,cy=size/2,R2=size/2-(opts.mini?2:30),R1=R2*(opts.mini?.55:.58);
+  const svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 '+size+' '+size);svg.setAttribute('class','wheel'+(opts.mini?' mini':''));
+  const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+  svg.append(mk('circle',{cx,cy,r:(R1+R2)/2,class:'wh-track','stroke-width':R2-R1}));
+  if(!opts.mini)for(let h=0;h<24;h++){const a=ang(h*60),big=h%3===0;const p1=[cx+(R2+3)*Math.cos(a),cy+(R2+3)*Math.sin(a)],p2=[cx+(R2+(big?10:6))*Math.cos(a),cy+(R2+(big?10:6))*Math.sin(a)];
+    svg.append(mk('line',{x1:p1[0],y1:p1[1],x2:p2[0],y2:p2[1],class:'wh-tick'+(big?' big':'')}));
+    if(big){const t=mk('text',{x:cx+(R2+20)*Math.cos(a),y:cy+(R2+20)*Math.sin(a),class:'wh-hour','text-anchor':'middle','dominant-baseline':'central'});t.textContent=pad(h);svg.append(t);}}
+  const bad=overlaps(plan);
+  plan.forEach(b=>{let [s,e]=spanOf(b);if(e-s>=1440)e=s+1439;const a1=ang(s)+.004,a2=ang(e)-.004;
+    const g=mk('g',{class:'wh-seg c'+b.c+(bad.has(b.id)?' clash':''),tabindex:opts.mini?'-1':'0',role:opts.mini?'presentation':'button','aria-label':opts.mini?'':b.t+', '+b.s+' – '+b.e+', '+wcName(b.c)+(bad.has(b.id)?', başka bir blokla çakışıyor':'')+'. Düzenle'});
+    g.append(mk('path',{d:arcPath(cx,cy,R1,R2,a1,a2)}));
+    if(!opts.mini&&e-s>=50){const am=(ang(s)+ang(e))/2,rm=(R1+R2)/2,x=cx+rm*Math.cos(am),y=cy+rm*Math.sin(am);
+      const maxCh=e-s>=150?Math.max(3,Math.floor((e-s)/1440*Math.PI*2*rm/7.2)):Math.max(3,Math.floor((R2-R1-6)/7));const tx=b.t.length>maxCh?b.t.slice(0,maxCh-1)+'…':b.t;
+      const tang=e-s>=150;let rot=tang?deg0(am)+90:deg0(am);rot=((rot%360)+360)%360;if(rot>90&&rot<270)rot-=180;
+      const t=mk('text',{x,y,class:'wh-lab'+(WC_DARK_TEXT.includes(b.c)?' dk':''),'text-anchor':'middle','dominant-baseline':'central',transform:'rotate('+rot.toFixed(1)+' '+x.toFixed(1)+' '+y.toFixed(1)+')'});
+      t.textContent=tx;svg.append(g);g.append(t);}else svg.append(g);
+    if(!opts.mini){const open=()=>openPlanBlock(b);g.addEventListener('click',e2=>{e2.stopPropagation();open();});g.addEventListener('keydown',e2=>{if(e2.key==='Enter'||e2.key===' '){e2.preventDefault();open();}});}
+  });
+  if(opts.now){const n=new Date(),m=n.getHours()*60+n.getMinutes(),a=ang(m);
+    svg.append(mk('line',{x1:cx+(R1-6)*Math.cos(a),y1:cy+(R1-6)*Math.sin(a),x2:cx+(R2+4)*Math.cos(a),y2:cy+(R2+4)*Math.sin(a),class:'wh-now'}));
+    svg.append(mk('circle',{cx:cx+(R2+4)*Math.cos(a),cy:cy+(R2+4)*Math.sin(a),r:opts.mini?3:5,class:'wh-nowdot'}));}
+  return svg;
+}
+function renderWheel(){
+  const B=$('wheelBody');if(!B)return;B.replaceChildren();
+  const p=S.day.plan,isToday=S.date===todayStr();
+  const card=el('section',{class:'card wheel-card'});
+  card.append(el('div',{class:'cardhead'},el('h2',{text:'Zaman çarkı'}),el('span',{class:'count',text:p.length?planHours(p):''})));
+  const box=el('div',{class:'wheel-box'});const svg=wheelSvg(p,340,{now:isToday});
+  svg.addEventListener('click',e=>{const r=svg.getBoundingClientRect(),x=(e.clientX-r.left)/r.width*340-170,y=(e.clientY-r.top)/r.height*340-170;const d=Math.hypot(x,y);if(d<70||d>160)return;let a=Math.atan2(y,x)+Math.PI/2;if(a<0)a+=Math.PI*2;const h=Math.floor(a/(Math.PI*2)*24);openPlanBlock(null,pad(h)+':00',pad((h+1)%24)+':00');});
+  box.append(svg);
+  const cur=isToday?nowBlock(p):null,nx=isToday?nextBlock(p):null;
+  const mid=el('div',{class:'wheel-mid'});
+  if(isToday){const n=new Date();mid.append(el('b',{class:'wm-time',text:pad(n.getHours())+':'+pad(n.getMinutes())}),el('span',{class:'wm-now',text:cur?cur.t:(p.length?'Boş zaman':'Plan yok')}));}
+  else mid.append(el('b',{class:'wm-time sm',text:new Intl.DateTimeFormat('tr-TR',{day:'numeric',month:'short'}).format(parse(S.date))}),el('span',{class:'wm-now',text:p.length?p.length+' blok':'Plan yok'}));
+  box.append(mid);card.append(box);
+  if(isToday&&nx)card.append(el('p',{class:'muted wheel-next',text:'Sırada: '+nx.s+' '+nx.t}));
+  card.append(el('p',{class:'muted',style:'margin:0;font-size:13px',text:'Çarkta bir saate dokunarak o saate blok ekleyebilir, bir bloğa dokunarak düzenleyebilirsin.'}));
+  const used=[...new Set(p.map(b=>b.c))].sort((a,b)=>a-b);
+  if(used.length)card.append(el('div',{class:'wh-legend',role:'list','aria-label':'Renkler'},...used.map(c=>el('span',{role:'listitem',class:'wl'},el('i',{class:'wsw c'+c,'aria-hidden':'true'}),wcName(c)))));
+  const acts=el('div',{class:'row'},el('button',{type:'button',class:'btn',onclick:()=>openPlanBlock(null)},'Blok ekle'));
+  const yd=S.monthDocs[addDays(S.date,-1)];
+  if(!p.length)acts.append(el('button',{type:'button',class:'btn ghost',onclick:copyYesterday},'Dünkü planı kopyala'));
+  if(!p.some(b=>b.c===1))acts.append(el('button',{type:'button',class:'btn ghost',onclick:async()=>{const bed=S.day.bed||BED_GOAL,wk=S.day.wake||WAKE_GOAL;S.day.plan.push({id:uid6(),s:bed,e:wk,t:'Uyku',c:1});saveDay();renderWheel();renderPlanToday();}},'Uykuyu ekle'));
+  card.append(acts);B.append(card);
+  const bad=overlaps(p);
+  const lc=el('section',{class:'card'},el('div',{class:'cardhead'},el('h2',{text:'Saat saat'}),bad.size?el('span',{class:'count clash-n',text:'Çakışma var'}):null));
+  if(!p.length)lc.append(el('p',{class:'empty',text:'Bu gün için plan yok. “Blok ekle” ile başla: uyku, iş, spor, hobi…'}));
+  const ul=el('ul',{class:'plan-list'});
+  planSorted(p).forEach(b=>{const on=cur&&cur.id===b.id;ul.append(el('li',{class:(on?'on ':'')+(bad.has(b.id)?'clash':'')},el('button',{type:'button',class:'plan-row',onclick:()=>openPlanBlock(b)},el('i',{class:'wsw c'+b.c,'aria-hidden':'true'}),el('span',{class:'pl-time',text:b.s+' – '+b.e}),el('span',{class:'pl-t',text:b.t}),bad.has(b.id)?el('small',{class:'pl-clash',text:'çakışıyor'}):on?el('small',{class:'pl-on',text:'şu an'}):null)));});
+  lc.append(ul);B.append(lc);
+}
+function planHours(p){const tot=p.reduce((a,b)=>{const [s,e]=spanOf(b);return a+Math.min(1440,e-s);},0);return fmtDur(Math.min(1440,tot))+' planlı';}
+async function copyYesterday(){
+  const yd=addDays(S.date,-1);let d=S.monthDocs[yd];if(!d){try{d=await idb.get('days',yd);}catch(e){}}
+  const p=d&&normPlan(d.plan);if(!p||!p.length){toast('Dün için plan yok.');return;}
+  S.day.plan=p.map(b=>Object.assign({},b,{id:uid6()}));saveDay();renderWheel();renderPlanToday();toast('Dünkü plan kopyalandı');
+}
+function openPlanBlock(b,s0,e0){
+  const isNew=!b;const d=b?Object.assign({},b):{id:uid6(),s:s0||'09:00',e:e0||'10:00',t:'',c:8};
+  openSheet(isNew?'Blok ekle':'Bloğu düzenle',body=>{
+    const t=el('input',{class:'field',maxlength:'60',placeholder:'ör. Kahvaltı, Toplantı, Yoga',value:d.t});t.addEventListener('input',()=>d.t=t.value);
+    const s=el('input',{class:'field',type:'time',value:d.s,step:'300'}),e=el('input',{class:'field',type:'time',value:d.e,step:'300'});
+    s.addEventListener('change',()=>d.s=s.value);e.addEventListener('change',()=>d.e=e.value);
+    const quick=['Kahvaltı','İş','Öğle yemeği','Spor','Kitap','Akşam yemeği','Hobi','Ekransız vakit'];
+    const qrow=el('div',{class:'chips'},...quick.map(q=>el('button',{type:'button',class:'chipf',onclick:()=>{t.value=q;d.t=q;}},q)));
+    const f=el('form',{class:'fmts'},el('label',{class:'fl'},'Ne yapacaksın?',t),qrow,
+      el('div',{class:'row2'},el('label',{class:'fl'},'Başlangıç',s),el('label',{class:'fl'},'Bitiş',e)),
+      el('div',{class:'fl'},el('span',{text:'Tür'}),radioChips('Tür',WCATS.map(([v,l])=>[v,l,'var(--wc'+v+')']),d.c,v=>{d.c=v;f.querySelectorAll('.wc-pick .chipf').forEach(x=>{const on=x.dataset.v==v;x.setAttribute('aria-pressed',on?'true':'false');x.setAttribute('aria-checked',on?'true':'false');});})),
+      el('button',{class:'btn',type:'submit'},isNew?'Çarka ekle':'Kaydet'));
+    const pick=f.querySelectorAll('.chips')[1];pick.classList.add('wc-pick');pick.querySelectorAll('.chipf').forEach((x,i)=>x.dataset.v=WCATS[i][0]);
+    f.addEventListener('submit',ev=>{ev.preventDefault();if(!d.t.trim()){t.focus();return;}if(tmin2(d.s)==null||tmin2(d.e)==null||d.s===d.e){toast('Başlangıç ve bitiş saatini kontrol et.');return;}
+      d.t=d.t.trim();if(isNew)S.day.plan.push(d);else{const i=S.day.plan.findIndex(x=>x.id===b.id);if(i>=0)S.day.plan[i]=d;}
+      saveDay();closeSheet();renderWheel();renderPlanToday();if(overlaps(S.day.plan).has(d.id))toast('Bu blok başka bir blokla çakışıyor.');});
+    body.append(f);
+    if(!isNew)body.append(el('div',{class:'row'},confirmBtn('Bloğu sil',()=>{S.day.plan=S.day.plan.filter(x=>x.id!==b.id);saveDay();closeSheet();renderWheel();renderPlanToday();})));
+    if(isNew)setTimeout(()=>t.focus(),30);
+  });
+}
+function renderPlanToday(){
+  const c=$('planCard');if(!c)return;const p=S.day.plan||[];
+  if(!p.length){c.hidden=true;return;}c.hidden=false;c.replaceChildren();
+  const isToday=S.date===todayStr(),cur=isToday?nowBlock(p):null,nx=isToday?nextBlock(p):null;
+  const txt=el('div',{class:'pt-txt'});
+  if(isToday){txt.append(el('small',{text:'Şu an'}),el('b',{text:cur?cur.t:'Boş zaman'}),el('span',{class:'muted',text:cur?cur.s+' – '+cur.e+(nx?' · Sırada: '+nx.s+' '+nx.t:''):(nx?'Sırada: '+nx.s+' '+nx.t:'Bugünün planı bitti')}));}
+  else txt.append(el('small',{text:'Günün planı'}),el('b',{text:p.length+' blok'}),el('span',{class:'muted',text:planHours(p)}));
+  c.append(el('button',{type:'button',class:'plan-today',onclick:()=>go('wheel'),'aria-label':'Zaman çarkını aç'},wheelSvg(p,120,{mini:true,now:isToday}),txt,el('span',{class:'rg-chev pt-chev','aria-hidden':'true'})));
+}
+setInterval(()=>{if(document.hidden)return;if(S.view==='today')renderPlanToday();if(S.view==='wheel'&&!sheetEl)renderWheel();},60000);
+/* ---------- v13: Kur'an takibi ---------- */
+const SURAHS=[["Fâtiha", 7], ["Bakara", 286], ["Âl-i İmrân", 200], ["Nisâ", 176], ["Mâide", 120], ["En'âm", 165], ["A'râf", 206], ["Enfâl", 75], ["Tevbe", 129], ["Yûnus", 109], ["Hûd", 123], ["Yûsuf", 111], ["Ra'd", 43], ["İbrâhîm", 52], ["Hicr", 99], ["Nahl", 128], ["İsrâ", 111], ["Kehf", 110], ["Meryem", 98], ["Tâhâ", 135], ["Enbiyâ", 112], ["Hac", 78], ["Mü'minûn", 118], ["Nûr", 64], ["Furkân", 77], ["Şuarâ", 227], ["Neml", 93], ["Kasas", 88], ["Ankebût", 69], ["Rûm", 60], ["Lokmân", 34], ["Secde", 30], ["Ahzâb", 73], ["Sebe'", 54], ["Fâtır", 45], ["Yâsîn", 83], ["Sâffât", 182], ["Sâd", 88], ["Zümer", 75], ["Mü'min", 85], ["Fussılet", 54], ["Şûrâ", 53], ["Zuhruf", 89], ["Duhân", 59], ["Câsiye", 37], ["Ahkâf", 35], ["Muhammed", 38], ["Fetih", 29], ["Hucurât", 18], ["Kâf", 45], ["Zâriyât", 60], ["Tûr", 49], ["Necm", 62], ["Kamer", 55], ["Rahmân", 78], ["Vâkıa", 96], ["Hadîd", 29], ["Mücâdele", 22], ["Haşr", 24], ["Mümtehine", 13], ["Saf", 14], ["Cuma", 11], ["Münâfikûn", 11], ["Teğâbün", 18], ["Talâk", 12], ["Tahrîm", 12], ["Mülk", 30], ["Kalem", 52], ["Hâkka", 52], ["Meâric", 44], ["Nûh", 28], ["Cin", 28], ["Müzzemmil", 20], ["Müddessir", 56], ["Kıyâme", 40], ["İnsân", 31], ["Mürselât", 50], ["Nebe'", 40], ["Nâziât", 46], ["Abese", 42], ["Tekvîr", 29], ["İnfitâr", 19], ["Mutaffifîn", 36], ["İnşikâk", 25], ["Bürûc", 22], ["Târık", 17], ["A'lâ", 19], ["Gâşiye", 26], ["Fecr", 30], ["Beled", 20], ["Şems", 15], ["Leyl", 21], ["Duhâ", 11], ["İnşirâh", 8], ["Tîn", 8], ["Alak", 19], ["Kadir", 5], ["Beyyine", 8], ["Zilzâl", 8], ["Âdiyât", 11], ["Kâria", 11], ["Tekâsür", 8], ["Asr", 3], ["Hümeze", 9], ["Fîl", 5], ["Kureyş", 4], ["Mâûn", 7], ["Kevser", 3], ["Kâfirûn", 6], ["Nasr", 3], ["Tebbet", 5], ["İhlâs", 4], ["Felak", 5], ["Nâs", 6]];
+const Q_TOTAL_AYAH=6236;
+const Q_KINDS=[['m','Meal'],['t','Tefsir']];
+function normQuran(x){const v=x&&typeof x==='object'?x:{},o={s:{},rounds:{m:0,t:0}};
+  const sx=v.s&&typeof v.s==='object'?v.s:{};
+  for(let n=1;n<=114;n++){const r=sx[n];if(!r||typeof r!=='object')continue;const d=k=>/^\d{4}-\d{2}-\d{2}$/.test(r[k])?r[k]:'';
+    const e={m:d('m'),t:d('t'),note:String(r.note||'').slice(0,4000)};if(e.m||e.t||e.note)o.s[n]=e;}
+  if(v.rounds){o.rounds.m=Math.max(0,+v.rounds.m||0);o.rounds.t=Math.max(0,+v.rounds.t||0);}
+  return o;}
+async function saveQuran(){try{await idb.put('kv',S.quran,'quran');setStatus('Kaydedildi');}catch(e){setStatus('Kaydedilemedi',true);}}
+const qRec=n=>S.quran.s[n]||{m:'',t:'',note:''};
+let qFilter='all',qSearch='';
+function qStats(k){let n=0,a=0;SURAHS.forEach(([_,ay],i)=>{if(qRec(i+1)[k]){n++;a+=ay;}});return {n,a};}
+function qNext(k){const i=SURAHS.findIndex((_,i)=>!qRec(i+1)[k]);return i<0?null:i+1;}
+async function qToggle(n,k){
+  const r=Object.assign({m:'',t:'',note:''},S.quran.s[n]);r[k]=r[k]?'':todayStr();
+  if(r.m||r.t||r.note)S.quran.s[n]=r;else delete S.quran.s[n];
+  await saveQuran();
+  const st=qStats(k);if(r[k]&&st.n===114)toast((k==='m'?'Mealin':'Tefsirin')+' tamamı bitti, tebrikler!');
+  renderQuran(true);
+}
+function qRow(n){
+  const [name,ay]=SURAHS[n-1],r=qRec(n);
+  const btn=k=>{const on=!!r[k],lab=k==='m'?'Meal':'Tefsir';return el('button',{type:'button',class:'q-tg q-'+k,'aria-pressed':on?'true':'false','aria-label':n+'. '+name+' suresi '+lab+(on?', okundu':', okunmadı'),onclick:()=>qToggle(n,k)},el('span',{class:'q-box','aria-hidden':'true'}),lab);};
+  return el('li',{class:'q-row'+(r.m&&r.t?' both':''),id:'q-'+n},
+    el('span',{class:'q-no','aria-hidden':'true',text:String(n)}),
+    el('button',{type:'button',class:'q-main',onclick:()=>openQuranItem(n),'aria-label':n+'. '+name+' suresi, '+ay+' ayet. Ayrıntılar ve not'},el('b',{text:name}),el('small',{text:ay+' ayet'+(r.note?' · not var':'')})),
+    el('div',{class:'q-tgs'},btn('m'),btn('t')));
+}
+function renderQuran(keepScroll){
+  const B=$('quranBody');if(!B)return;const y=keepScroll?window.scrollY:null;B.replaceChildren();
+  const head=el('section',{class:'card q-head'},el('div',{class:'cardhead'},el('h2',{text:'Kur’an takibim'}),el('span',{class:'count',text:'114 sure'})));
+  Q_KINDS.forEach(([k,lab])=>{const st=qStats(k),pc=Math.round(st.a/Q_TOTAL_AYAH*100),nx=qNext(k),rd=S.quran.rounds[k];
+    head.append(el('div',{class:'q-stat'},
+      el('div',{class:'q-stat-top'},el('span',{class:'q-lab',text:lab}),el('b',{text:st.n+'/114 sure'}),el('span',{class:'muted',text:(st.a&&pc<1?'%1’den az':'%'+pc)+' · '+st.a+'/'+Q_TOTAL_AYAH+' ayet'})),
+      el('div',{class:'progress q-bar '+k,role:'img','aria-label':lab+': 114 surenin '+st.n+' tanesi, ayetlerin yüzde '+pc+' okundu'},el('span',{style:'width:'+(st.a/Q_TOTAL_AYAH*100).toFixed(1)+'%'})),
+      el('div',{class:'q-stat-bot'},nx?el('button',{type:'button',class:'link',onclick:()=>{qFilter='all';qSearch='';renderQuran();const t=$('q-'+nx);if(t)t.scrollIntoView({block:'center'});}},'Sıradaki: '+nx+'. '+SURAHS[nx-1][0]):el('span',{class:'q-done',text:'Tamamı bitti ✦'}),
+        rd?el('span',{class:'muted',text:rd+'. kez tamamlandı'}):null,
+        !nx?confirmBtn('Yeniden başla',async()=>{S.quran.rounds[k]++;Object.keys(S.quran.s).forEach(n=>{const r=S.quran.s[n];r[k]='';if(!r.m&&!r.t&&!r.note)delete S.quran.s[n];});await saveQuran();renderQuran();}):null)));});
+  B.append(head);
+  const sIn=el('input',{class:'field',type:'search',placeholder:'Sure adı ya da numarası',value:qSearch,'aria-label':'Sure ara'});
+  sIn.addEventListener('input',()=>{qSearch=sIn.value;drawList();});
+  B.append(el('div',{class:'q-tools'},sIn,radioChips('Süz',[['all','Hepsi'],['nm','Meali kalan'],['nt','Tefsiri kalan'],['done','İkisi de bitti']],qFilter,v=>{qFilter=v;renderQuran();})));
+  const card=el('section',{class:'card q-card'}),ul=el('ul',{class:'q-list'});card.append(ul);B.append(card);
+  const norm=t=>t.toLocaleLowerCase('tr-TR').normalize('NFD').replace(/[̀-ͯ'’]/g,'').replace(/ı/g,'i');
+  function drawList(){ul.replaceChildren();const q=norm(qSearch.trim());let c=0;
+    for(let n=1;n<=114;n++){const r=qRec(n);
+      if(qFilter==='nm'&&r.m)continue;if(qFilter==='nt'&&r.t)continue;if(qFilter==='done'&&!(r.m&&r.t))continue;
+      if(q&&!(String(n)===q||norm(SURAHS[n-1][0]).includes(q)))continue;ul.append(qRow(n));c++;}
+    if(!c)ul.append(el('li',{class:'empty',text:qFilter==='done'&&!q?'Henüz hem meali hem tefsiri biten sure yok.':'Bu aramaya uyan sure yok.'}));}
+  drawList();
+  if(y!=null)window.scrollTo(0,y);
+}
+function openQuranItem(n){
+  const [name,ay]=SURAHS[n-1];
+  openSheet(n+'. '+name+' suresi',body=>{
+    const r=qRec(n);
+    const line=(k,lab)=>el('div',{class:'q-sheet-row'},el('span',{class:'q-lab',text:lab}),el('span',{text:r[k]?fmtDay(r[k])+' tarihinde okundu':'Henüz okunmadı'}),
+      r[k]?el('input',{type:'date',class:'field q-date',value:r[k],max:todayStr(),'aria-label':lab+' okuma tarihi',onchange:async e=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(e.target.value))return;S.quran.s[n]=Object.assign({m:'',t:'',note:''},S.quran.s[n],{[k]:e.target.value});await saveQuran();renderQuran(true);refreshSheet();}}):null,
+      el('button',{type:'button',class:'btn ghost',onclick:async()=>{await qToggle(n,k);refreshSheet();}},r[k]?'İşareti kaldır':'Okudum'));
+    const no=el('textarea',{class:'field',rows:'6',placeholder:'Bu sureden aklında kalanlar, sevdiğin ayetler, tefsirden notlar…'});no.value=r.note;
+    no.addEventListener('change',async()=>{const e=Object.assign({m:'',t:'',note:''},S.quran.s[n]);e.note=no.value;if(e.m||e.t||e.note)S.quran.s[n]=e;else delete S.quran.s[n];await saveQuran();renderQuran(true);});
+    body.append(el('p',{class:'muted',style:'margin:0',text:ay+' ayet'}),line('m','Meal'),line('t','Tefsir'),el('label',{class:'fl'},'Notlarım',no));
+  });
+}
 function openThemePicker(){
   openSheet('Tema',body=>{
     const cur=themePref;
@@ -2244,6 +2808,11 @@ function openMenu(){
     const item=(title,sub,fn)=>el('button',{class:'menuitem',type:'button',onclick:()=>{closeSheet();fn();}},el('b',{text:title}),el('small',{text:sub}));
     const al=cabAlerts().length;
     body.append(item('Hobi köşem',S.works.length?S.works.length+' eser':'Bitirdiğin eserlerin galerisi',()=>openHobby()),
+      item('Zaman çarkı',S.day.plan.length?planHours(S.day.plan):'Gününü saat saat planla',()=>go('wheel')),
+      item('Kur’an takibim',(()=>{const a=qStats('m').n,b=qStats('t').n;return a||b?'Meal '+a+'/114 · Tefsir '+b+'/114':'114 sure için meal ve tefsir';})(),()=>go('quran')),
+      item('Alışveriş listem',(()=>{const o=S.shop.filter(i=>!i.bought);return o.length?o.length+' ürün':'Almak istediklerin';})(),()=>go('shop')),
+      item('Hayallerim',(()=>{const o=S.dreams.filter(d=>!d.done).length,d=S.dreams.length-o;return S.dreams.length?o+' hayal'+(d?' · '+d+' gerçekleşti':''):'Hayallerin ve ilk adımları';})(),()=>go('dreams')),
+      item('Vision board',S.vision.items.length?S.vision.items.length+' parça':'Görsellerle hayal panon',()=>go('vision')),
       item('Bakım dolabım',al?al+' ürün için uyarı var':S.cabinet.filter(c=>c.status!=='done').length+' ürün',()=>go('cabinet')),
       item('Bingo',(()=>{const c=S.bingo[todayStr().slice(0,4)];if(!c)return 'Bu yılın bingo kartını oluştur';const st=bingoState(c);return st.done+'/'+st.total+' tamamlandı'+(st.lines?' · '+st.lines+' bingo':'');})(),()=>{bingoYear=null;go('bingo');}),
       item('Zaman kapsülü',(()=>{const r=S.letters.filter(l=>l.sealed&&!l.opened&&canOpen(l)).length;if(r)return r+' mektup açılmayı bekliyor';const s2=S.letters.filter(l=>l.sealed&&!l.opened).length;return s2?s2+' mühürlü mektup':'Gelecek yılki kendine mektup yaz';})(),()=>go('letters')),
@@ -2393,20 +2962,25 @@ async function loadTopicHist(){
   list.forEach(d=>{const snip=d.topicText.trim().replace(/\s+/g,' ');
     box.append(el('button',{class:'titem',onclick:()=>{setDate(d.date);go('topic');}},el('small',{text:fmt.format(parse(d.date))}),el('b',{text:d.topic.q}),el('span',{text:snip.length>140?snip.slice(0,140)+'…':snip})));});
 }
-function renderDay(){applyTheme();renderHeader();renderMood();renderSleep();renderCabAlert();renderWishToday();renderLetterPrompt();renderToday();renderEntries();renderPage();renderPhotos();renderThanksInputs();renderTopic();if(S.view==='thanks')renderHistory();if(S.view==='month')renderMonth();}
+function renderDay(){applyTheme();renderHeader();renderMood();renderSleep();renderCabAlert();renderWishToday();renderLetterPrompt();renderToday();renderEntries();renderPage();renderPhotos();renderThanksInputs();renderTopic();renderPlanToday();if(S.view==='wheel')renderWheel();if(S.view==='thanks')renderHistory();if(S.view==='month')renderMonth();}
 function renderAll(){renderTypes();renderDay();}
 function go(v){
   S.view=v;
-  closeSheet();['today','journal','thanks','topic','shelf','hobby','cabinet','bingo','letters','month','export'].forEach(k=>{$('v-'+k).hidden=k!==v;});
+  closeSheet();['today','journal','thanks','topic','shelf','hobby','cabinet','bingo','letters','month','export','shop','dreams','vision','wheel','quran'].forEach(k=>{$('v-'+k).hidden=k!==v;});
   applyTheme();
   if(v==='bingo')renderBingo();
   if(v==='letters')renderLetters();
   if(v==='hobby')renderHobby();
   if(v==='cabinet')renderCabinet();
+  if(v==='shop')renderShop();
+  if(v==='dreams')renderDreams();
+  if(v==='vision')renderVision();
+  if(v==='wheel')renderWheel();
+  if(v==='quran')renderQuran();
   if(v==='shelf')loadShelf();
   if(v==='topic'){renderTopic();loadTopicHist();}
   document.querySelectorAll('.tab').forEach(t=>{if(t.dataset.view===v)t.setAttribute('aria-current','page');else t.removeAttribute('aria-current');});
-  if(['hobby','cabinet','bingo','letters','export'].includes(v))$('goMenu').setAttribute('aria-current','page');else $('goMenu').removeAttribute('aria-current');
+  if(['hobby','cabinet','bingo','letters','export','shop','dreams','vision','wheel','quran'].includes(v))$('goMenu').setAttribute('aria-current','page');else $('goMenu').removeAttribute('aria-current');
   if(v==='export')renderExport();
   if(v==='thanks')loadHistory();
   if(v==='month'){const d=parse(S.date);S.month=S.monthTarget||{y:d.getFullYear(),m:d.getMonth()};S.monthTarget=null;loadMonth();}
@@ -2450,10 +3024,11 @@ function dayBlocks(d){
   const films=S.shelf.films.filter(f=>f.date===d.date),fin=S.shelf.books.filter(b=>b.status==='done'&&b.end===d.date);
   const book=d.bookId&&S.shelf.books.find(b=>b.id===d.bookId);
   const sers=S.shelf.series.filter(x=>x.status==='done'&&x.end===d.date),works=S.works.filter(w=>w.date===d.date),slp=sleepDur(d);
-  if(!anyRoutine&&!ayak&&!ent.length&&!note&&!g.length&&!ph.length&&!d.hobbyDone&&!(d.topicText||'').trim()&&!d.mood&&!d.energy&&!d.pages&&!films.length&&!fin.length&&!sers.length&&!works.length&&!slp)return null;
+  if(!anyRoutine&&!ayak&&!ent.length&&!note&&!g.length&&!ph.length&&!d.hobbyDone&&!(d.topicText||'').trim()&&!d.mood&&!d.energy&&!d.pages&&!films.length&&!fin.length&&!sers.length&&!works.length&&!slp&&!(d.plan&&d.plan.length))return null;
   const B=[{k:'h1',t:fmtLong(d.date)}];
   if(d.mood||d.energy)B.push({k:'p',t:[d.mood?'Ruh hâli: '+moodName(d.mood):null,d.energy?'Enerji: '+d.energy+'/5':null].filter(Boolean).join(' · ')});
   if(slp)B.push({k:'p',t:'Uyku: '+d.bed+' – '+d.wake+' ('+fmtDur(slp)+')'});
+  if(d.plan&&d.plan.length){B.push({k:'h2',t:'Günün planı'});planSorted(d.plan).forEach(b=>B.push({k:'li',s:'•',t:b.s+' – '+b.e+'  '+b.t+' ('+wcName(b.c)+')'}));}
   if(sc.total){
     B.push({k:'h2',t:'Rutinler · '+sc.done+'/'+sc.total});
     GROUPS.forEach(([gk,name])=>{const items=rs.filter(r=>(r.group||'gun')===gk);if(!items.length)return;B.push({k:'h3',t:name});
@@ -2651,11 +3226,11 @@ async function runExport(kind){
       const all=await loadAllDays();
       const days=Object.keys(all).sort().map(k=>all[k]);
       const photos=[];const ids=new Set();days.forEach(d=>d.photos.forEach(id=>ids.add(id)));
-      ['books','films','series'].forEach(k=>S.shelf[k].forEach(x=>{if(x.cover)ids.add(x.cover);}));S.works.forEach(w=>{w.photos.forEach(id=>ids.add(id));if(w.audio)ids.add(w.audio);});Object.values(S.bingo).forEach(c=>c.cells.forEach(z=>{if(z.photo)ids.add(z.photo);}));
+      ['books','films','series'].forEach(k=>S.shelf[k].forEach(x=>{if(x.cover)ids.add(x.cover);}));S.works.forEach(w=>{w.photos.forEach(id=>ids.add(id));if(w.audio)ids.add(w.audio);});Object.values(S.bingo).forEach(c=>c.cells.forEach(z=>{if(z.photo)ids.add(z.photo);}));S.shop.forEach(i=>{if(i.photo)ids.add(i.photo);});S.dreams.forEach(d=>{if(d.photo)ids.add(d.photo);});S.vision.items.forEach(i=>{if(i.photo)ids.add(i.photo);});
       let i=0;
       for(const id of ids){i++;exStatus('Fotoğraflar yedeğe ekleniyor… ('+i+'/'+ids.size+')');
         try{const r=await idb.get('photos',id);if(r&&r.blob)photos.push({id:id,date:r.date||'',data:await blobToDataUrl(r.blob)});}catch(e){}}
-      const data={app:'Defterim',version:2,exportedAt:new Date().toISOString(),settings:Object.assign({v:PLAN_VERSION},S.settings),monthly:S.monthly||{},questionsExtra:S.extraQ||[],shelf:S.shelf,reviews:S.reviews||{},works:S.works,cabinet:S.cabinet,wish:S.wish,letters:S.letters.map(l=>l.sealed&&!l.opened?Object.assign({},l,{text:''}):l),bingo:S.bingo,days:days,photos:photos};
+      const data={app:'Defterim',version:2,exportedAt:new Date().toISOString(),settings:Object.assign({v:PLAN_VERSION},S.settings),monthly:S.monthly||{},questionsExtra:S.extraQ||[],shelf:S.shelf,reviews:S.reviews||{},works:S.works,cabinet:S.cabinet,wish:S.wish,letters:S.letters.map(l=>l.sealed&&!l.opened?Object.assign({},l,{text:''}):l),bingo:S.bingo,shop:S.shop,dreams:S.dreams,vision:S.vision,quran:S.quran,days:days,photos:photos};
       if(await saveFile('Defterim-yedek-'+todayStr()+'.json',new Blob([JSON.stringify(data)],{type:'application/json'})))await markBackup();
     }else{
       const r=await buildBlocks();
@@ -2691,6 +3266,10 @@ async function readRestore(file){
     try{S.dayCount=await idb.count('days');}catch(e){}
     if(data.wish){const inc=normWish(data.wish);Object.keys(inc).forEach(k=>{const cur=S.wish[k]||(S.wish[k]=[]);inc[k].forEach(i=>{if(!cur.some(c=>c.id===i.id))cur.push(i);});});await saveWish();}
     if(Array.isArray(data.letters)){normLetters(data.letters).forEach(l=>{const i=S.letters.findIndex(x=>x.id===l.id);if(i<0)S.letters.push(l);else if(l.sealed&&!S.letters[i].sealed)S.letters[i]=l;});await saveLetters();}
+    if(data.quran){const inc=normQuran(data.quran);Object.keys(inc.s).forEach(n=>{const a=S.quran.s[n]||{m:'',t:'',note:''},b=inc.s[n];S.quran.s[n]={m:a.m||b.m,t:a.t||b.t,note:a.note||b.note};});S.quran.rounds.m=Math.max(S.quran.rounds.m,inc.rounds.m);S.quran.rounds.t=Math.max(S.quran.rounds.t,inc.rounds.t);await saveQuran();}
+    if(Array.isArray(data.shop)){const ids=new Set(S.shop.map(x=>x.id));normShop(data.shop).forEach(x=>{if(!ids.has(x.id))S.shop.push(x);});await saveShop();}
+    if(Array.isArray(data.dreams)){const ids=new Set(S.dreams.map(x=>x.id));normDreams(data.dreams).forEach(x=>{if(!ids.has(x.id))S.dreams.push(x);});await saveDreams();}
+    if(data.vision){const inc=normVision(data.vision),ids=new Set(S.vision.items.map(x=>x.id));if(!S.vision.title)S.vision.title=inc.title;inc.items.forEach(x=>{if(!ids.has(x.id))S.vision.items.push(x);});await saveVision();}
     if(data.bingo){const inc=normBingo(data.bingo);Object.keys(inc).forEach(y=>{if(!S.bingo[y])S.bingo[y]=inc[y];});await saveBingo();}
     if(Array.isArray(data.works)){const ids=new Set(S.works.map(w=>w.id));normWorks(data.works).forEach(w=>{if(!ids.has(w.id))S.works.push(w);});await saveWorks();}
     if(Array.isArray(data.cabinet)){const inc=normCabinet(data.cabinet),names=new Set(S.cabinet.map(c=>c.id));inc.forEach(c=>{const same=S.cabinet.findIndex(x=>x.id===c.id||(x.name===c.name&&!x.opened&&!x.brand));if(same>=0)S.cabinet[same]=c;else if(!names.has(c.id))S.cabinet.push(c);});await saveCabinet();}
