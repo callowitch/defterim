@@ -1,6 +1,6 @@
 // Nokta Nokta: uygulamanın internetsiz de açılmasını sağlar.
 // Yeni bir sürüm yüklediğinde aşağıdaki numarayı bir artır (v2, v3…).
-const VERSION = 'defterim-v24';
+const VERSION = 'defterim-v25';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', (e) => {

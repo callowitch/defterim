@@ -1013,6 +1013,15 @@ section.card.is-empty .serieskey,section.card.is-empty .tip,section.card.is-empt
 .nb .nbi.sel{touch-action:none;cursor:grab}
 .nb .nbi.sel:focus-visible,.nb .nbi:focus-visible{outline:2px dashed var(--accent);outline-offset:4px}
 .nb-tools .btn{background:var(--card);color:var(--ink);border:1px solid var(--line);min-height:38px;padding:6px 14px}
+/* ---- v25: planı kopyala ---- */
+.cp-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.cp-row{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;color:var(--ink);font:inherit;cursor:pointer}
+.cp-row:active{transform:scale(.99)}
+.cp-row svg{width:52px;height:52px;flex:none}
+.cp-txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.cp-txt b{font-size:15px}.cp-txt span{font-size:13px}
+.cp-txt small{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cp-acts{display:flex;flex-direction:column;gap:8px;margin-top:12px}
 /* ---- v24: yazı görsellerin etrafından akar ---- */
 .nb-flow{display:flow-root;position:relative}
 .nb-fl{height:0;pointer-events:none}
@@ -2950,6 +2959,7 @@ function renderWheel(){
   const acts=el('div',{class:'row'},el('button',{type:'button',class:'btn',onclick:()=>openPlanBlock(null)},'Blok ekle'));
   const yd=S.monthDocs[addDays(S.date,-1)];
   if(!p.length)acts.append(el('button',{type:'button',class:'btn ghost',onclick:copyYesterday},'Dünkü planı kopyala'));
+  acts.append(el('button',{type:'button',class:'btn ghost',onclick:openCopyPlan},'Başka günden kopyala'));
   if(!p.some(b=>b.c===1))acts.append(el('button',{type:'button',class:'btn ghost',onclick:async()=>{const bed=S.day.bed||BED_GOAL,wk=S.day.wake||WAKE_GOAL;S.day.plan.push({id:uid6(),s:bed,e:wk,t:'Uyku',c:1});saveDay();renderWheel();renderPlanToday();}},'Uykuyu ekle'));
   card.append(acts);B.append(card);
   const bad=overlaps(p);
@@ -2964,6 +2974,31 @@ async function copyYesterday(){
   const yd=addDays(S.date,-1);let d=S.monthDocs[yd];if(!d){try{d=await idb.get('days',yd);}catch(e){}}
   const p=d&&normPlan(d.plan);if(!p||!p.length){toast('Dün için plan yok.');return;}
   S.day.plan=p.map(b=>Object.assign({},b,{id:uid6()}));saveDay();renderWheel();renderPlanToday();toast('Dünkü plan kopyalandı');
+}
+async function openCopyPlan(){
+  let days=[];try{days=(await idb.all('days')).filter(d=>d&&d.date&&d.date!==S.date);}catch(e){}
+  days=days.map(d=>({date:d.date,plan:normPlan((S.monthDocs[d.date]||d).plan)})).filter(d=>d.plan.length).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,60);
+  openSheet('Başka günden kopyala',body=>{
+    if(!days.length){body.append(el('p',{class:'empty',text:'Henüz planı olan başka bir gün yok. Bir günü planladığında buradan kopyalayabilirsin.'}));return;}
+    body.append(el('p',{class:'muted',style:'margin:0 0 6px;font-size:13px',text:'Hangi günün planını '+fmtDay(S.date)+' gününe kopyalamak istiyorsun?'}));
+    const ul=el('ul',{class:'cp-list'});
+    days.forEach(d=>{const sum=planSorted(d.plan).slice(0,3).map(b=>b.t).join(' · ')+(d.plan.length>3?' …':'');
+      ul.append(el('li',{},el('button',{type:'button',class:'cp-row',onclick:()=>pickCopyPlan(d)},wheelSvg(d.plan,52,{mini:true}),
+        el('span',{class:'cp-txt'},el('b',{text:fmtDay(d.date)+(d.date===addDays(S.date,-1)?' · dün':'')}),el('span',{class:'muted',text:d.plan.length+' blok · '+planHours(d.plan)}),el('small',{class:'muted',text:sum})))));});
+    body.append(ul);
+  });
+}
+function pickCopyPlan(d){
+  const doCopy=mode=>{const nw=d.plan.map(b=>Object.assign({},b,{id:uid6()}));S.day.plan=mode==='add'?S.day.plan.concat(nw).slice(0,48):nw;saveDay();closeSheet();renderWheel();renderPlanToday();
+    toast(fmtDay(d.date)+' planı kopyalandı');if(mode==='add'&&overlaps(S.day.plan).size)setTimeout(()=>toast('Bazı bloklar çakışıyor, listeden düzenleyebilirsin.'),1800);};
+  if(!S.day.plan.length){doCopy('replace');return;}
+  closeSheet();
+  openSheet('Bu günün planı dolu',body=>{
+    body.append(el('p',{class:'muted',style:'margin:0',text:'Bu günde zaten '+S.day.plan.length+' blok var. '+fmtDay(d.date)+' planını nasıl ekleyelim?'}),
+      el('div',{class:'cp-acts'},el('button',{type:'button',class:'btn',onclick:()=>doCopy('replace')},'Mevcut planın yerine koy'),
+        el('button',{type:'button',class:'btn ghost',onclick:()=>doCopy('add')},'Mevcut plana ekle'),
+        el('button',{type:'button',class:'btn ghost',onclick:closeSheet},'Vazgeç')));
+  });
 }
 function openPlanBlock(b,s0,e0){
   const isNew=!b;const d=b?Object.assign({},b):{id:uid6(),s:s0||'09:00',e:e0||'10:00',t:'',c:8};
