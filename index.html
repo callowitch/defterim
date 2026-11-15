@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Defterim</title>
+<title>Nokta Nokta</title>
 <meta name="description" content="Rutinler, bullet journal ve şükür defteri.">
 <script>try{var dm=localStorage.getItem('defterim-mode');if(dm==='light'||dm==='dark')document.documentElement.dataset.theme=dm;}catch(e){}</script>
 <meta name="theme-color" content="#FAFAF7" media="(prefers-color-scheme: light)">
@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Defterim">
+<meta name="apple-mobile-web-app-title" content="Nokta Nokta">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Figtree:wght@400;500;600;700&display=swap">
@@ -1008,13 +1008,36 @@ section.card.is-empty .serieskey,section.card.is-empty .tip,section.card.is-empt
 .vb-dl{padding:0 6px 4px;align-items:center}
 .vb-dl .muted{font-size:12.5px}
 .wrap>.wrap{width:100%;min-width:0}
+/* ---- v21: defter: mod yok ---- */
+.nb .nbi{pointer-events:auto;cursor:pointer;touch-action:manipulation}
+.nb .nbi.sel{touch-action:none;cursor:grab}
+.nb .nbi.sel:focus-visible,.nb .nbi:focus-visible{outline:2px dashed var(--accent);outline-offset:4px}
+.nb-tools .btn{background:var(--card);color:var(--ink);border:1px solid var(--line);min-height:38px;padding:6px 14px}
+/* ---- v22: sesli not ---- */
+.voice-card{gap:12px}
+.vr-start{display:inline-flex;align-items:center;gap:8px}
+.vr-mic{width:12px;height:12px;border-radius:50%;background:#E5484D;box-shadow:0 0 0 3px color-mix(in srgb,#E5484D 30%,transparent)}
+.vr-live{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,#E5484D 12%,var(--card))}
+.vr-live b{font-size:22px;font-variant-numeric:tabular-nums}
+.vr-dot{width:12px;height:12px;border-radius:50%;background:#E5484D;animation:vrPulse 1s ease-in-out infinite}
+@keyframes vrPulse{50%{opacity:.25}}
+.voice-rec{display:flex;flex-direction:column;gap:10px}
+.voice-rec .vr-stop{align-self:flex-start}
+.voice-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.voice-item{display:flex;flex-direction:column;gap:6px;padding-top:10px;border-top:1px dashed var(--line)}
+.vi-top{display:flex;align-items:center;gap:10px}
+.vi-top .vi-del{margin-left:auto;font-size:13px;padding:4px 0;min-height:32px}
+.voice-item audio,.past-voice audio{width:100%;height:40px}
+.past-voice{display:flex;flex-direction:column;gap:4px;margin-top:4px}
+.past-voice small{font-size:12px;color:var(--ink-2)}
+@media (prefers-reduced-motion: reduce){.vr-dot{animation:none}}
 </style>
 </head>
 <body>
 
 <div class="wrap">
   <header>
-    <div class="toprow"><span class="brand">Defterim</span><span class="row" style="gap:10px"><span class="status" id="status">Açılıyor…</span><button class="hdrbtn modebtn" id="modeBtn" type="button" aria-label="Koyu moda geç"></button><button class="hdrbtn" id="goMenu" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menü</button></span></div>
+    <div class="toprow"><span class="brand">Nokta Nokta</span><span class="row" style="gap:10px"><span class="status" id="status">Açılıyor…</span><button class="hdrbtn modebtn" id="modeBtn" type="button" aria-label="Koyu moda geç"></button><button class="hdrbtn" id="goMenu" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menü</button></span></div>
     <div class="daterow">
       <button class="iconbtn" id="prev" aria-label="Önceki gün"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
       <div class="date" id="dateLabel" aria-live="polite"></div>
@@ -1100,7 +1123,7 @@ section.card.is-empty .serieskey,section.card.is-empty .tip,section.card.is-empt
       <div><button class="btn" id="bkGo">Yedek al</button></div>
     </section>
 
-    <section class="card thanks-card" id="tqCard" data-part="day" aria-labelledby="h-tq">
+    <section class="card thanks-card" id="tqCard" aria-labelledby="h-tq" hidden>
       <div class="cardhead"><h2 id="h-tq">Bugün neye şükrettin?</h2><span class="count" id="tqCount" style="color:var(--gold)">0/3</span></div>
       <p class="muted" id="tqText" style="margin:0"></p>
       <div><button class="btn" id="tqGo" style="background:var(--gold);color:var(--paper)">Şükür defterini aç</button></div>
@@ -1121,11 +1144,11 @@ section.card.is-empty .serieskey,section.card.is-empty .tip,section.card.is-empt
     </section>
 
     <section class="card nb-card" id="nbCard" aria-labelledby="h-page">
-      <div class="cardhead"><h2 id="h-page">Sayfa</h2><button type="button" class="btn ghost nb-deco-btn" id="nbDecoBtn" aria-pressed="false">Süsle</button></div>
-      <div class="nb-tools" id="nbTools" hidden>
+      <div class="cardhead"><h2 id="h-page">Sayfa</h2></div>
+      <div class="nb-tools" id="nbTools">
         <button type="button" class="btn" id="nbAddSt">+ Sticker</button>
         <button type="button" class="btn" id="nbAddPh">+ Fotoğraf</button>
-        <span class="muted nb-tip">Sürükle, köşedeki daireyle büyüt ve çevir.</span>
+        <span class="muted nb-tip">Bir sticker’a ya da fotoğrafa dokun: sürükleyip taşı, köşedeki turuncu daireyle büyüt ve çevir. Boş yere dokununca yazmaya dönersin.</span>
       </div>
       <div class="nb" id="nb">
         <div class="nb-holes" aria-hidden="true"></div>
@@ -1136,6 +1159,11 @@ section.card.is-empty .serieskey,section.card.is-empty .tip,section.card.is-empt
       </div>
     </section>
 
+    <section class="card voice-card" aria-labelledby="h-voice">
+      <div class="cardhead"><h2 id="h-voice">Sesli not</h2><span class="count" id="voiceCount"></span></div>
+      <div class="voice-rec" id="voiceRec"></div>
+      <ul class="voice-list" id="voiceList"></ul>
+    </section>
     <section class="card" aria-labelledby="h-ph">
       <div class="cardhead"><h2 id="h-ph">Fotoğraflar</h2><span class="muted" id="phStatus"></span></div>
       <div class="photos" id="photos"></div>
@@ -1369,8 +1397,8 @@ function el(tag,attrs,...kids){const e=document.createElement(tag);if(attrs)for(
 
 /* Sihirli konu soruları (her biri bir satır) */
 const QUESTIONS=["Sonbahar deyince aklına gelen ilk şey ne?", "Bu ay hayatına eklemek istediğin küçük bir rutin var mı?", "Sonbaharda yapmayı en çok sevdiğin şey ne?", "Şu an telefonunda en son kaydettiğin fotoğraf ne?", "Son zamanlarda “Bunu herkes bilmeli” dediğin bir keşif ne?", "Bir arkadaşınla bugün buluşacak olsanız ne yapardınız?", "Bu ay kendine almak istediğin bir şey var mı?", "Çocukken sonbaharı en çok ne için severdin?", "Şu an bir kursa yazılacak olsan ne öğrenmek isterdin?", "Son zamanlarda gittiğin en güzel yer neresi?", "Bir hafta boyunca her gün aynı kahvaltıyı yapacak olsan ne seçerdin?", "Bu ayın sana verdiği bir his var mı?", "Son zamanlarda arkadaşlarına en çok hangi şeyi anlatıyorsun?", "Bir günlüğüne istediğin bir şehirde yaşama şansın olsa nereyi seçerdin?", "Şu an dolabında en sevdiğin kıyafet hangisi?", "Son zamanlarda yaptığın en spontane plan neydi?", "Bir akşamını tamamen kendine ayırsan nasıl geçirirdin?", "Bu ay mutlaka görmek istediğin bir yer var mı?", "Şu an hayatında daha fazla olsun istediğin şey ne?", "Son zamanlarda keşfettiğin ve tekrar yapmak istediğin bir aktivite ne?", "Arkadaş grubunda genellikle hangi rolü üstleniyorsun?", "Bir gün boyunca sadece sevdiğin şeyleri yapacak olsan güne nasıl başlardın?", "Son zamanlarda sana “tam benlik” dedirten bir şey ne oldu?", "Yağmurlu bir günde evde mi kalırsın, dışarı mı çıkarsın?", "Şu an bir bilet hediye edilse hangi etkinliğe gitmek isterdin?", "Son zamanlarda yaptığın en iyi alışveriş neydi?", "Bu ay denemek istediğin yeni bir yemek veya mekân var mı?", "Bir arkadaşının sende en sevdiği özelliği ne?", "Şu an hayatının soundtrack’ine hangi şarkıyı koyardın?", "Bu ay bitmeden mutlaka gerçekleştirmek istediğin bir plan ne?", "Bu ay takviminde en çok hangi günü bekliyorsun?", "Son zamanlarda denemek isteyip bir türlü fırsat bulamadığın şey ne?", "Bir mağazada kaybolana kadar gezebileceğin bölüm hangisi?", "Çocukken çok sevip artık yapmadığın bir şey var mı?", "Şu sıralar hakkında daha fazla şey öğrenmek istediğin konu ne?", "Bir arkadaşınla ortak bir proje yapacak olsanız ne yapardınız?", "Son zamanlarda önyargılarını kıran bir olay oldu mu?", "Telefonunda silmeye kıyamadığın eski bir fotoğraf var mı?", "Bir günlüğüne kendi kafeni açsan menüne kesinlikle ne koyardın?", "İnsanların çok sevdiği ama senin bir türlü sevemediğin şey ne?", "Evinde sadece bir köşeyi yeniden düzenleyebilsen nereden başlardın?", "Bu ay izleyeceğin dizi ne?", "Bir etkinliğe ücretsiz katılma hakkın olsa neyi seçerdin?", "Hayatında en çok hangi konuda fikrine danışılır?", "Bu aralar en çok dinlediğin şarkı ne?", "Bir ay boyunca yeni bir beceri öğrenmek zorunda olsan ne seçerdin?", "Arkadaşlarınla yaptığın ve her seferinde eğlendiğin aktivite ne?", "En yakınım dediğin kişi kim?", "Yazın en sevdiğin anısı ne?", "Bir günlüğüne başka bir mesleği deneyebilsen hangisini seçerdin?", "Sonbahar için en sevdiğin kıyafet kombini nasıl?", "Bir konuda uzman olup herkese öğretebilecek olsan bu ne olurdu?", "Son zamanlarda gereğinden fazla araştırdığın bir konu var mı?", "Bir arkadaşınla aranızda oluşmuş komik bir gelenek var mı?", "Şu an en çok eksikliğini hissettiğin şey ne?", "Bir hafta boyunca her gün farklı bir aktivite yapacak olsan ilk gün neyle başlardın?", "İnsanların seni en çok hangi konuda yanlış anladığını düşünüyorsun?", "Son zamanlarda karşılaştığın en güzel tesadüf neydi?", "Asla sıkılmadan haftalar geçirebileceğin arkadaşın hangisi?", "Bu ay kendine ayırdığın zaman yeterli mi?", "Bu ayın sonunda dönüp baktığında neyin gerçekleşmiş olmasını istersin?", "Sana hayatında değersiz hissettiren biri var mı?", "Kiminle bir günlüğüne yer değiştirmek isterdin?", "Sosyal hayatını nasıl tanımlarsın?", "Şu an hayatının sakin bir dönemi mi yoksa geçiş dönemi mi?", "Bir günlük süper gücün olsa neyi seçersin?", "Bugüne nasıl başladın?", "Neyi ertelemek istiyorsun?", "Geçen hafta en çok hangi günü sevdin?", "Bugün başını ne ağrıttı?", "En son kimden veya hangi olaydan ilham aldın?", "Sence en büyük başarın ne?", "Şu an bir ülkeye ışınlanabilsen nereyi isterdin?", "En az 10 yıllık bir arkadaşın var mı?", "Bugün sevildiğini hissettin mi?", "Bugün yapman gerekenler olmasa ne yapardın?", "6 ay öncesine gidebilsen neyi değiştirirdin?", "Bir gelirin var mı?", "Nasıl hatırlanmak istersin?", "Sana kötü geldiğini bildiğin bir alışkanlığın var mı?", "Saç stilin nasıl?", "Favori YouTube kanalın hangisi?", "Hayatından çıkarman gereken biri var mı?", "Sonsuza kadar hangi yemeği yiyebilirsin?", "Bugün yorucu muydu?", "Bir düşmanın olsa neyi bilmesini istemezsin?", "Podcast dinliyor musun? Dinliyorsan kimleri dinliyorsun?", "En son kiminle buluştun?", "Bu ay yeni bir kitaba başladın mı?", "İdeal “me time” etkinliklerini anlat.", "Bu ayı 10 üzerinden puanlasan kaç verirdin?", "Bu ay ilk yapmak istediğin şey ne?", "Son zamanlarda “Keşke bunu daha önce deneseydim” dediğin şey ne?", "Telefonunun duvar kâğıdı ne?", "Uğurlu sayın kaç ve neden uğurlu?", "Şu an hayatında “iyi ki var” dediğin alışkanlık ne?", "Bu yaz en güzel günün hangisiydi?", "Bir gün boyunca telefonsuz kalabilir misin?", "En son birine tavsiye ettiğin mekân neresiydi?", "Şu an çalma listende ilk sıradaki şarkı hangisi?", "Kendine en son ne için “aferin” dedin?", "Son zamanlarda en çok hangi kelimeyi kullanıyorsun?", "Bugün seni en çok ne şaşırttı?", "Şu an çantanda bulunan en gereksiz eşya ne?", "Bu ayın sonunda gerçekleşmesini istediğin küçük bir dileğin var mı?", "Son zamanlarda izlediğin en güzel film neydi?", "Bu yaz en çok kiminle görüştün?", "Şansın olsa şu an nereye ışınlanırdın?", "Son zamanlarda “bir daha kesin yaparım” dediğin aktivite ne?", "Bugün bir arkadaşın seni tek kelimeyle anlatsa ne derdi?", "Şu an en çok özlediğin yemek hangisi?", "Bu ay kendine vermek istediğin küçük ödül ne?", "Son zamanlarda seni en çok heyecanlandıran mesaj kimden geldi?", "En sevdiğin yaz kokusu ne? (Deniz, güneş kremi, toprak, kahve…)", "Bugün sosyal medyada ne kadar zaman geçirdin?", "Şu an yaşadığın şehre ilk kez geliyor olsan önce nereye giderdin?", "Son zamanlarda seni en çok düşündüren soru ne oldu?", "Bu mevsim bitmeden yapmak istediğin şey ne?", "Şu anki hayatın geride kalsa kendine nasıl bir kariyer inşa ederdin?", "Bu ay hayatını ne kolaylaştırdı?", "Bu ayı tek bir emojiyle anlatsan hangisini seçerdin?", "Gelecek aydaki kendine küçük bir not bırak.", "Konuşmaktan kaçındığın bir konu var mı?", "Annene ne sormak isterdin?", "Şu an ne olsa mutlu olurdun?", "En çok hangi aktiviteyi yapmak istiyorsun?", "Şu an kendinle ilgili en çok gurur duyduğun şey ne?", "Bugün seni ne güldürdü?", "En kısa sürede izlemek istediğin film ne?", "Üç kelimeyle kendini anlat.", "Bugün kimle konuşmak seni iyi hissettirdi?", "Favori dizin hangisi?", "En son yaptığın yaratıcı şey nedir?", "Hayatındaki küçük bir mutluluk ne?", "Bugün kendini nasıl motive ettin?", "Bugünü kiminle geçiriyorsun?", "Şu an seni en çok heyecanlandıran şey ne?", "Her durumda seni destekleyen biri var mı?", "Kişisel gelişimin için neler yapıyorsun?", "Kendini en son ne zaman bulutların üzerinde hissettin?", "En büyük eksikliğin ne?", "Bugün hangi sorunu çözdün?", "Kendini bir kelimeyle tanımlayacak olsan hangisi olurdu?", "1 ay sonra kendinle ilgili görmek istediğin değişim ne?", "İşinden, okulundan ya da bölümünden memnun musun?", "Neyi engellemek istiyorsun?", "Hayat sence adil mi?", "Uzun süredir aramayı ertelediğin biri var mı?", "Üç kelimeyle aileni anlat.", "En kötü huyun ne?", "Bugün seni gülümseten bir şey neydi?", "Şu an hangi hedefin peşindesin?", "Bu ay sana ne öğretti?", "Seni gerçekten tanıyan biri, hangi davranışından senin üzgün olduğunu anında anlar?", "Sırf başkaları hayal kırıklığına uğramasın diye sürdürdüğün bir “rol” var mı?", "Bu yıl bir renk olsaydı hangi renk olurdu?", "Tanımadığın birinin senin hakkında sahip olduğu ilk izlenim genellikle ne oluyor?", "İmza yemeğin var mı? Varsa ne?", "Şu anki sosyal çevreni 3 kelimeyle nasıl tanımlarsın?", "Kariyer hedefin ne?", "Seni en çok etkileyen film veya kitaptan bir alıntı yaz.", "Gergin bir gün geçirdiğinde akşamını nasıl planlarsın?", "Bu yılın şu ana kadarki kısmı senin için nasıl geçti?", "Guilty pleasure olsa da izlediğin dizi ya da reality show hangisi?", "Zamanını en çok alan şey ne?", "En son kiminle, nerede uzun bir kahve sohbeti yaptın?", "En son hangi yeteneğini geliştirmek için bir adım attın?", "Hangi konuda “asla taviz vermem” diyorsun?", "Şu anki favori Instagram hesabın veya içerik üreticin kim?", "Bugün fazladan 3 saatin olsa ne yapardın?", "Şu anki “ekran süren” seni tatmin ediyor mu, yoksa azaltmalı mısın?", "Bir çekilişten seyahat çıksa, biletin hangi ülkeye ya da şehre kesilmesini istersin?", "Küçüklük hayalin hangi meslekti?", "Yarın ne için heyecanlanıyorsun? (Küçük bile olsa)", "Favori oyunun ne?", "Genelde hangi saatlerde en verimlisin?", "Ajanda kullanmayı sever misin?", "Hayatında, bir yıl önceki kendine anlatsan asla inanmayacağı bir olay var mı?", "Şansın olsa yurt dışında yaşar mıydın?", "Şu an en çok vakit geçirdiğin 3 kişi kim?", "Burcunu seviyor musun? İlgin var mı?", "Şu an en büyük ihtiyacın ne?", "Kitap okumak mı, film izlemek mi?", "Bu aralar diline dolanan ve sürekli mırıldandığın o şarkı hangisi?", "Son birkaç ayda en çok zaman geçirdiğin kişi kim?", "Gardırobuna bu ay eklediğin ya da eklemek istediğin ilk parça ne?", "Son zamanlarda dışarıda yediğin ve “Bunu evde kesin denemeliyim” dediğin yemek ya da tatlı neydi?", "Şu sıralar telefonunda en çok hangi uygulamada vakit öldürüyorsun?", "Bu ay içinde aldığın ve seni en çok heyecanlandıran haber neydi?", "Son günlerde keşfettiğin, “Bunu kesin izlemeliyim” dediğin bir şey var mı?", "Akşamları dışarı çıkarken yapmayı en sevdiğin kombin hangisi?", "Konserine gitmek isteyeceğin dünyaca ünlü isim kim?", "Son zamanlarda bıkmadan, üst üste dinlediğin bir podcast bölümü ya da video oldu mu?", "Bu ay neyi denemek istiyorsun?", "Bu ay plansız, tamamen spontane gelişen en güzel an neydi?", "Yakın zamanda aldığın ve “İyi ki paraya kıyıp almışım” dediğin şey ne?", "Bu aralar sabahları yataktan daha enerjik kalkmanı sağlayan şey ne?", "Son günlerde arkadaş ortamında en çok hangi konuyu döndürdünüz?", "Favori yaz meyven ne?", "En çok zaman geçirdiğin yer neresi?", "Bu mevsimin sonuna kadar yapmak için kendine bir hedef koy.", "Şu an çekmecende veya masanda duran, atılması gereken ama kıyamadığın o gereksiz şey ne?", "Bu aralar yoldayken arkada ne çalıyor?", "Bu ay sabırsızlıkla beklediğin şey ne?", "Gelecek ay kesinlikle yapman gereken şey ne?", "Favori yaz aktiviten ne?", "Yazın en çok giydiğin renk ne?", "Bu aralar çevrenden aldığın en güzel iltifat neydi?", "İzlemeyi bırakamadığın dizi hangisi?", "Yakın zamanda bir tatil planın var mı, varsa nereye?", "Favori yaz içeceğin ne?", "Gelecek yaza bir cümle bırak.", "Babana ne sormak isterdin?", "Neyi halletmek için biraz daha zamana ihtiyacın var?", "Hangi ünlüyle röportaj yapmak isterdin?", "Hangi sorunun sana sorulmasından çekiniyorsun?", "En son hangi konsere kiminle gittin?", "En son hangi şarkıyı dinledin?", "Geçen aydan çıkardığın bir ders oldu mu?", "Üç kelimeyle arkadaş ortamını anlat.", "Bir isteğin anında gerçekleşecek olsa ne dilerdin?", "Son zamanlarda gereksiz olduğunu bildiğin hâlde aldığın o şey ne?", "Bugünü hatırlatan bir kelime yaz.", "Hatırladığın en son rüya neydi?", "Bugüne dair neyi hatırlamak istersin?", "Kendini en huzurlu hissettiğin yer neresi?", "Pazar sabahları yapmaktan en çok hoşlandığın şey nedir?", "Geçmişte çok istediğin ama artık önemsiz olan şey ne?", "İnsanların sana en çok hangi soruyu sormasını seviyorsun?", "Şu an için en büyük beklentin nedir?", "Bugün sana ilham olan bir olay oldu mu?", "En sevdiğin tatlı hangisi?", "Bugün nasıl daha iyi olabilirdi?", "En son izlediğin film hangisi?", "Kendinle özdeşleştirdiğin bir şarkı var mı?", "Bu aralar önündeki en büyük engel ne?", "Bugün enerjini en çok ne düşürdü?", "Bugün hangi duygun baskındı?", "Bu ayın en güzel anları nelerdi?", "Bu aralar en çok hangi sanatçıyı dinliyorsun?", "Bu yıl bir film olsa filmin adı ne olurdu?", "Bu hafta kendine karşı nasıl daha nazik olabilirdin?", "Son zamanlarda “hayır” demek isteyip “evet” dediğin bir şey oldu mu?", "Bu aralar seni en çok neyin yorduğunu fark ettin?", "Bir yıl sonraki kendine şimdiden ne söylemek isterdin?", "Son zamanlarda fikrini değiştirdiğin bir konu var mı?", "Hangi alışkanlığın sana en çok iyi geliyor, neden?", "Bugün yaptığın küçük ama önemli bir seçim neydi?", "Kendinde geliştirmek istediğin tek bir şeyi seçsen ne olurdu?", "En son ne zaman konfor alanının dışına çıktın?", "Seni korkutan ama yine de yapmak istediğin bir şey var mı?", "Hayatında sınır koyman gereken bir alan var mı?", "Başaramasan bile denemeye değer bulduğun bir hayalin ne?", "Kendine en çok hangi konuda haksızlık ediyorsun?", "Bir arkadaşın senin yerinde olsa ona ne tavsiye ederdin?", "Son zamanlarda kendinle ilgili öğrendiğin yeni bir şey ne?", "Enerjini artıran üç şeyi yaz.", "Birine imrendiğin oldu mu? Bu sana aslında neyi istediğini söylüyor?", "Geçmişteki kendini hangi konuda affetmek istersin?", "Bu ay bıraktığın ya da bırakmak istediğin bir şey ne?", "Seni sen yapan değerlerden üçünü yaz.", "Mükemmel olması gerekmeyen ama başlaman gereken bir iş var mı?", "Son zamanlarda en çok hangi konuda kendine güvendin?", "Mutlu bir günün tarifini yazsan içinde neler olurdu?", "Hayatında şu an “yeterince iyi” olan bir şey ne?", "Kendine en son ne zaman gerçekten dinlenme izni verdin?", "Hangi duyguyu daha sık yaşamak istersin?", "Şu an hayatında neyi kontrol edebiliyorsun, neyi edemiyorsun?", "Sana iyi gelen bir sözü ya da cümleyi yaz.", "Önümüzdeki hafta seni mutlu edecek küçük bir plan yap.", "Erteleyip durduğun bir iş var mı? Seni gerçekten ne durduruyor?", "Kendine bir mektup yazsan ilk cümlesi ne olurdu?", "Beş yıl sonra sıradan bir gününün nasıl geçmesini isterdin?", "Son zamanlarda kendinle gurur duyduğun küçük bir an neydi?", "Hayatından neyi azaltsan daha hafif hissederdin?", "Sevdiğin insanlara daha çok göstermek istediğin şey ne?", "Hangi konuda daha sabırlı olmak istersin?", "Bugün bedenin sana ne söyledi?", "Hata yaptığında kendinle nasıl konuşuyorsun?", "Bir zamanlar bırakıp yeniden başlamak istediğin bir uğraş var mı?", "Seni en çok ne rahatlatır?", "Son zamanlarda birinin gününü güzelleştirdin mi?", "Hangi anlarda zamanın nasıl geçtiğini fark etmiyorsun?", "Bu yılın kalanı için bir kelime seçsen ne olurdu?", "Senin için başarı ne demek?", "Son zamanlarda aldığın en iyi tavsiye neydi?", "Kendinde yeni yeni sevmeye başladığın bir özellik var mı?", "Bir gününü tekrar yaşayabilsen hangisini seçerdin?", "Seni gerçekten dinlendiren şeylerle sadece oyalayan şeyler hangileri?", "Bu hafta kime teşekkür etmek istersin?", "Kendi hızında ilerlemeye izin verdiğin bir alan var mı?", "Geçen yılın bu zamanından bu yana nasıl değiştin?", "Hayallerinden birini küçük adımlara bölsen ilk adım ne olurdu?", "Bugün neyi akışına bırakabilirsin?", "Hangi rutinin seni en çok sakinleştiriyor?", "Kendine verdiğin bir sözü tuttuğun son an neydi?", "Hayatındaki hangi insan sana kendini en çok “sen” gibi hissettiriyor?", "Bu ay kendin için yaptığın en iyi şey neydi?"];
-function emptyDay(date){return {date:date,checks:{},hobby:null,hobbyDone:false,entries:[],photos:[],note:'',gratitude:['','',''],topic:null,topicText:'',mood:null,energy:null,pages:0,bookId:null,bed:'',wake:'',plan:[],deco:[]};}
-function normDay(raw,date){const d=emptyDay(date);if(!raw)return d;return {date:date,checks:Object.assign({},raw.checks||{}),hobby:raw.hobby||null,hobbyDone:!!raw.hobbyDone,entries:Array.isArray(raw.entries)?raw.entries.map(x=>Object.assign({},x)):[],photos:Array.isArray(raw.photos)?raw.photos.slice():[],note:typeof raw.note==='string'?raw.note:'',gratitude:[0,1,2].map(i=>(Array.isArray(raw.gratitude)&&raw.gratitude[i])||''),topic:raw.topic&&raw.topic.q?{q:String(raw.topic.q)}:null,topicText:typeof raw.topicText==='string'?raw.topicText:'',mood:lv(raw.mood),energy:lv(raw.energy),pages:Math.max(0,Math.min(5000,parseInt(raw.pages,10)||0)),bookId:raw.bookId?String(raw.bookId):null,bed:/^\d{2}:\d{2}$/.test(raw.bed)?raw.bed:'',wake:/^\d{2}:\d{2}$/.test(raw.wake)?raw.wake:'',plan:normPlan(raw.plan),deco:normDeco(raw.deco)};}
+function emptyDay(date){return {date:date,checks:{},hobby:null,hobbyDone:false,entries:[],photos:[],note:'',gratitude:['','',''],topic:null,topicText:'',mood:null,energy:null,pages:0,bookId:null,bed:'',wake:'',plan:[],deco:[],voice:[]};}
+function normDay(raw,date){const d=emptyDay(date);if(!raw)return d;return {date:date,checks:Object.assign({},raw.checks||{}),hobby:raw.hobby||null,hobbyDone:!!raw.hobbyDone,entries:Array.isArray(raw.entries)?raw.entries.map(x=>Object.assign({},x)):[],photos:Array.isArray(raw.photos)?raw.photos.slice():[],note:typeof raw.note==='string'?raw.note:'',gratitude:[0,1,2].map(i=>(Array.isArray(raw.gratitude)&&raw.gratitude[i])||''),topic:raw.topic&&raw.topic.q?{q:String(raw.topic.q)}:null,topicText:typeof raw.topicText==='string'?raw.topicText:'',mood:lv(raw.mood),energy:lv(raw.energy),pages:Math.max(0,Math.min(5000,parseInt(raw.pages,10)||0)),bookId:raw.bookId?String(raw.bookId):null,bed:/^\d{2}:\d{2}$/.test(raw.bed)?raw.bed:'',wake:/^\d{2}:\d{2}$/.test(raw.wake)?raw.wake:'',plan:normPlan(raw.plan),deco:normDeco(raw.deco),voice:Array.isArray(raw.voice)?raw.voice.filter(v=>v&&v.id).map(v=>({id:String(v.id),sec:Math.max(0,+v.sec||0),at:/^\d{2}:\d{2}$/.test(v.at)?v.at:''})).slice(0,30):[]};}
 function lv(v){v=parseInt(v,10);return v>=1&&v<=5?v:null;}
 
 const S={db:null,uid:null,assets:null,date:todayStr(),day:emptyDay(todayStr()),settings:{routines:ROUTINES_DEFAULT.slice(),hobbies:HOBBIES_DEFAULT.slice()},view:'today',entryType:'task',unsubDay:null,pending:null,timer:null,month:null,monthDocs:{},history:null,uploading:0,monthly:{},shelf:{books:[],films:[],series:[]},reviews:{},works:[],cabinet:[],wish:{},letters:[],bingo:{},shop:[],dreams:[],vision:{title:'',items:[]},quran:{s:{},rounds:{m:0,t:0}},trackers:{list:[],cur:null},challenges:[],stickers:[]};
@@ -2359,7 +2387,7 @@ async function bingoImage(y){
   }
   x.fillStyle='#56606E';x.font='600 30px Figtree, sans-serif';x.fillText(st.done+'/'+st.total+' tamamlandı'+(st.lines?' · '+st.lines+' bingo':''),W/2,H-45);
   const blob=await new Promise(r=>cv.toBlob(r,'image/png'));if(!blob){toast('Resim oluşturulamadı.');return;}
-  const ok=await saveFile('Defterim-'+y+'-bingo.png',new Blob([blob],{type:'image/png'}));if(ok)toast('Bingo kartın resim olarak hazır');
+  const ok=await saveFile('NoktaNokta-'+y+'-bingo.png',new Blob([blob],{type:'image/png'}));if(ok)toast('Bingo kartın resim olarak hazır');
 }
 
 /* ---------- aylık temalar ---------- */
@@ -2850,7 +2878,7 @@ async function downloadVision(){
       lines.forEach((ln,k)=>g.fillText(ln,0,(k-(lines.length-1)/2)*size*1.15));}
     if(cell.tape){g.shadowColor='transparent';g.fillStyle=accent;g.globalAlpha=.35;g.rotate(-.06);g.fillRect(-w*.18,-h/2-12*sc,w*.36,26*sc);g.globalAlpha=1;}
     g.restore();});
-  g.fillStyle=gold;g.globalAlpha=.8;g.textAlign='center';g.font='600 30px '+sans;g.fillText('Defterim',W/2,H-60);g.globalAlpha=1;
+  g.fillStyle=gold;g.globalAlpha=.8;g.textAlign='center';g.font='600 30px '+sans;g.fillText('Nokta Nokta',W/2,H-60);g.globalAlpha=1;
   const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',.92));
   if(blob)await saveFile('vision-board-'+todayStr()+'.jpg',blob);
 }
@@ -3246,9 +3274,9 @@ function renderPartSubs(){
   const bits=[];if(S.day.mood)bits.push(moodName(S.day.mood));const m=sleepDur(S.day);if(m)bits.push(fmtDur(m));
   $('pts-mood').textContent=bits.length?bits.join(' · '):'boş';
   const sc=scoreOf(S.day,S.date);$('pts-rut').textContent=sc.total?sc.done+'/'+sc.total:'';
-  const g=(S.day.gratitude||[]).filter(x=>x&&x.trim()).length,hb=S.day.hobby?1:0;
-  $('pts-day').textContent='şükür '+g+'/3'+(hb?' · hobi ✓':'');
-  document.querySelectorAll('#todayParts .part-tab').forEach(b=>{const d=(b.dataset.p==='mood'&&S.day.mood&&m)||(b.dataset.p==='rut'&&sc.total&&sc.done===sc.total)||(b.dataset.p==='day'&&g===3);b.classList.toggle('done',!!d);});
+  const hb=!!S.day.hobbyDone,pl=(S.day.plan||[]).length;
+  $('pts-day').textContent=hb?'hobi ✓':(pl?pl+' blok plan':'hobi');
+  document.querySelectorAll('#todayParts .part-tab').forEach(b=>{const d=(b.dataset.p==='mood'&&S.day.mood&&m)||(b.dataset.p==='rut'&&sc.total&&sc.done===sc.total)||(b.dataset.p==='day'&&hb);b.classList.toggle('done',!!d);});
 }
 document.querySelectorAll('#todayParts .part-tab').forEach(b=>b.addEventListener('click',()=>setPart(b.dataset.p)));
 (function(){const hd=document.querySelector('header');if(!hd)return;const f=()=>document.documentElement.style.setProperty('--hdr',hd.offsetHeight+'px');f();if(window.ResizeObserver)new ResizeObserver(f).observe(hd);else window.addEventListener('resize',f);})();
@@ -3260,15 +3288,17 @@ const nbW=()=>{const n=$('nb');return n?n.clientWidth:360;};
 function nbAutosize(){const t=$('pageIn');if(!t)return;t.style.height='auto';t.style.height=Math.max(t.scrollHeight,380)+'px';nbSizeLayer();}
 function nbSizeLayer(){const n=$('nb'),L=$('nbLayer'),t=$('pageIn');if(!n||!L||!t)return;const W=nbW();let maxB=0;
   (S.day.deco||[]).forEach(i=>{const el2=document.getElementById('nbi-'+i.id);const h=el2?el2.offsetHeight:i.w*W;maxB=Math.max(maxB,i.y*W+h+24);});
+  const need=Math.max(maxB-t.offsetTop-24,0);if(need>t.offsetHeight){t.style.height=need+'px';}
   n.style.minHeight=Math.max(t.offsetTop+t.offsetHeight+24,maxB,460)+'px';}
 function nbItemEl(i){
   const W=nbW();
   const box=el('div',{class:'nbi nbi-'+i.k+(nbSel===i.id?' sel':''),id:'nbi-'+i.id,style:`left:${(i.x*W).toFixed(1)}px;top:${(i.y*W).toFixed(1)}px;width:${(i.w*W).toFixed(1)}px;transform:rotate(${i.r.toFixed(1)}deg)`,'aria-label':i.k==='st'?'Sticker':'Fotoğraf'});
   const img=photoImg(i.m,{alt:'',draggable:'false'});img.addEventListener('load',nbSizeLayer);
   if(i.k==='ph')box.append(el('span',{class:'nbi-tape','aria-hidden':'true'}),img);else box.append(img);
-  if(nbDeco){
+  {
     box.tabIndex=0;
-    box.addEventListener('pointerdown',e=>nbDrag(e,i,box,'move'));
+    box.addEventListener('pointerdown',e=>{if(nbSel===i.id)nbDrag(e,i,box,'move');});
+    box.addEventListener('click',e=>{e.stopPropagation();if(nbSel!==i.id){nbSel=i.id;renderDeco();}});
     box.addEventListener('keydown',e=>{const st=e.shiftKey?.05:.01;const mv={ArrowLeft:[-st,0],ArrowRight:[st,0],ArrowUp:[0,-st],ArrowDown:[0,st]}[e.key];if(mv){e.preventDefault();i.x+=mv[0];i.y=Math.max(0,i.y+mv[1]);nbApply(i,box);saveDay();}if(e.key==='Delete'||e.key==='Backspace'){e.preventDefault();nbRemove(i);}});
     if(nbSel===i.id){
       const h=el('span',{class:'nbi-h','aria-hidden':'true',title:'Büyüt, küçült, çevir'});h.addEventListener('pointerdown',e=>{e.stopPropagation();nbDrag(e,i,box,'scale');});
@@ -3281,8 +3311,7 @@ function nbItemEl(i){
 function nbApply(i,box){const W=nbW();box.style.left=(i.x*W)+'px';box.style.top=(i.y*W)+'px';box.style.width=(i.w*W)+'px';box.style.transform='rotate('+i.r+'deg)';}
 function nbRemove(i){S.day.deco=S.day.deco.filter(x=>x.id!==i.id);nbSel=null;saveDay();renderDeco();}
 function nbDrag(e,i,box,mode){
-  if(!nbDeco)return;e.preventDefault();
-  if(nbSel!==i.id){nbSel=i.id;renderDeco();box=document.getElementById('nbi-'+i.id);if(!box)return;}
+  e.preventDefault();
   const W=nbW(),L=$('nbLayer').getBoundingClientRect(),start={x:e.clientX,y:e.clientY,ix:i.x,iy:i.y,iw:i.w,ir:i.r};
   const cx=()=>L.left+(i.x+i.w/2)*W,cy=()=>{const b=box.getBoundingClientRect();return b.top+b.height/2;};
   const c0={x:cx(),y:cy()};const d0=Math.hypot(e.clientX-c0.x,e.clientY-c0.y)||1,a0=Math.atan2(e.clientY-c0.y,e.clientX-c0.x);
@@ -3299,16 +3328,14 @@ function renderDeco(){
   const L=$('nbLayer'),card=$('nbCard');if(!L)return;
   S.day.deco=(S.day.deco||[]).filter(i=>i.k==='st'||S.day.photos.includes(i.m));
   L.replaceChildren(...S.day.deco.map(nbItemEl));
-  card.classList.toggle('deco',nbDeco);$('pageIn').readOnly=nbDeco;
-  $('nbDecoBtn').setAttribute('aria-pressed',nbDeco?'true':'false');$('nbDecoBtn').textContent=nbDeco?'Bitti':'Süsle';
-  $('nbTools').hidden=!nbDeco;
+  $('pageIn').readOnly=false;card.classList.toggle('has-sel',!!nbSel);
   nbSizeLayer();
 }
 function nbPlace(k,m){
   const n=$('nb'),W=nbW(),r=n.getBoundingClientRect();
   const midY=Math.min(Math.max(window.innerHeight/2-r.top,60),Math.max(r.height-120,60));
   const w=k==='ph'?.38:.26;
-  const it={id:uid6(),k,m,x:.5-w/2+(Math.random()-.5)*.2,y:Math.max(0,midY/W-w/2),w,r:Math.round((Math.random()-.5)*16)};
+  const it={id:uid6(),k,m,x:k==='st'?.7-w/2+(Math.random()-.5)*.08:.5-w/2+(Math.random()-.5)*.2,y:Math.max(0,midY/W-w/2),w,r:Math.round((Math.random()-.5)*16)};
   S.day.deco=S.day.deco||[];S.day.deco.push(it);nbSel=it.id;saveDay();renderDeco();
 }
 /* sticker kütüphanesi */
@@ -3360,7 +3387,7 @@ let pastSeed=0,pastCache=null,pastCacheAt=0;
 async function renderPastDay(){
   const c=$('pastCard');if(!c)return;
   if(!pastCache||Date.now()-pastCacheAt>20000){try{pastCache=(await idb.all('days')).filter(d=>d&&d.date);pastCacheAt=Date.now();}catch(e){pastCache=[];}}
-  const cand=pastCache.filter(d=>d.date<S.date&&((d.note||'').trim()||(d.entries||[]).length||(d.photos||[]).length||(d.gratitude||[]).some(x=>x&&x.trim()))).sort((a,b)=>a.date<b.date?-1:1);
+  const cand=pastCache.filter(d=>d.date<S.date&&((d.note||'').trim()||(d.entries||[]).length||(d.photos||[]).length||(d.deco||[]).length||(d.voice||[]).length)).sort((a,b)=>a.date<b.date?-1:1);
   if(!cand.length){c.hidden=true;return;}c.hidden=false;
   const d=cand[(hashStr(S.date)+pastSeed)%cand.length];
   const ago=dayDiff(d.date,S.date),agoTxt=ago<7?ago+' gün önce':ago<35?Math.round(ago/7)+' hafta önce':ago<365?Math.round(ago/30)+' ay önce':Math.round(ago/365)+' yıl önce';
@@ -3373,18 +3400,18 @@ async function renderPastDay(){
   if(d.mood){const f=el('span',{class:'past-mood'});f.append(face(d.mood),el('span',{text:moodName(d.mood)}));pg.append(f);}
   const note=(d.note||'').trim().replace(/\s+/g,' ');
   if(note)pg.append(el('p',{class:'past-note',text:note.length>260?note.slice(0,260)+'…':note}));
-  else{const g=(d.gratitude||[]).filter(x=>x&&x.trim());const en=(d.entries||[]).slice(0,4);
-    if(en.length)pg.append(el('ul',{class:'past-ent'},...en.map(x=>el('li',{text:x.text||''}))));
-    else if(g.length)pg.append(el('p',{class:'past-note',text:'Şükrettiklerin: '+g.join(', ')}));}
+  else{const en=(d.entries||[]).slice(0,4);
+    if(en.length)pg.append(el('ul',{class:'past-ent'},...en.map(x=>el('li',{text:x.text||''}))));}
+  if((d.voice||[]).length){const v=d.voice[0];pg.append(el('div',{class:'past-voice'},el('small',{text:'Sesli not'+(d.voice.length>1?' ('+d.voice.length+')':'')}),audioEl(v.id)));}
   const ph=(d.photos||[]).slice(0,3);if(ph.length)pg.append(el('div',{class:'past-ph'},...ph.map((id,k)=>el('span',{class:'past-pol',style:'transform:rotate('+[-4,3,-2][k]+'deg)'},photoImg(id,{alt:''})))));
   pb.append(pg,el('div',{class:'row'},el('button',{type:'button',class:'btn ghost',onclick:()=>{setDate(d.date);go('journal');window.scrollTo(0,0);}},'O güne git'),
     cand.length>1?el('button',{type:'button',class:'link',onclick:()=>{pastSeed++;renderPastDay();}},'Başka bir gün'):null));
 }
 
-$('nbDecoBtn').addEventListener('click',()=>{nbDeco=!nbDeco;nbSel=null;renderDeco();});
 $('nbAddSt').addEventListener('click',openStickerSheet);
 $('nbAddPh').addEventListener('click',openPhotoPlaceSheet);
-$('nb').addEventListener('pointerdown',e=>{if(nbDeco&&!e.target.closest('.nbi')&&nbSel){nbSel=null;renderDeco();}});
+$('nb').addEventListener('pointerdown',e=>{if(!e.target.closest('.nbi')&&nbSel){nbSel=null;renderDeco();}});
+$('nb').addEventListener('click',e=>{if(e.target.closest('.nbi')||e.target===$('pageIn'))return;const t=$('pageIn');t.focus();const n=t.value.length;try{t.setSelectionRange(n,n);}catch(err){}});
 if(window.ResizeObserver)new ResizeObserver(()=>{if(S.view==='journal')renderDeco();}).observe($('nb'));
 /* ---------- v20: Takvim bölümleri ---------- */
 let mPart=null;
@@ -3407,6 +3434,46 @@ function fitBingo(){document.querySelectorAll('.bingo .bcell').forEach(cell=>{co
   const over=()=>cell.scrollHeight>cell.clientHeight+1||t.scrollHeight>t.clientHeight+1||t.scrollWidth>t.clientWidth+1;
   while(over()&&fs>8&&n<30){fs-=1;t.style.fontSize=fs+'px';if(star&&ss>14){ss-=1.5;star.style.fontSize=ss+'px';}n++;}});}
 window.addEventListener('resize',()=>{if(S.view==='bingo')requestAnimationFrame(fitBingo);});
+/* ---------- v22: sesli not ---------- */
+let voiceRec=null;
+const fmtSec=s=>Math.floor(s/60)+':'+pad(Math.floor(s%60));
+function voiceSupported(){return !!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);}
+function renderVoice(){
+  const box=$('voiceRec'),ul=$('voiceList');if(!box)return;const v=S.day.voice||[];
+  $('voiceCount').textContent=v.length?v.length+' kayıt':'';
+  box.replaceChildren();
+  if(voiceRec&&voiceRec.date===S.date){
+    box.append(el('div',{class:'vr-live',role:'status'},el('span',{class:'vr-dot','aria-hidden':'true'}),el('b',{id:'vrTime',text:fmtSec(voiceRec.sec)}),el('span',{class:'muted',text:'Kaydediliyor…'})),
+      el('button',{type:'button',class:'btn vr-stop',onclick:stopVoice},'Durdur ve kaydet'),el('button',{type:'button',class:'link',onclick:()=>stopVoice(true)},'Vazgeç'));
+  }else{
+    const row=el('div',{class:'row'});
+    if(voiceSupported())row.append(el('button',{type:'button',class:'btn vr-start',onclick:startVoice},el('span',{class:'vr-mic','aria-hidden':'true'}),'Kaydetmeye başla'));
+    row.append(fileButton('Ses dosyası ekle','audio/*,.m4a,.mp3,.wav,.aac,.ogg,.opus',false,async fs=>{try{const id=await storeAudio(fs[0]);addVoice(id,0);}catch(e){mediaErr(e);}},'btn ghost'));
+    box.append(row);
+    if(!v.length)box.append(el('p',{class:'muted',style:'margin:0;font-size:13.5px',text:'Yazmak istemediğin günler için gününü sesli anlat. Kayıtlar sadece telefonunda saklanır.'}));
+  }
+  ul.replaceChildren(...v.map(x=>el('li',{class:'voice-item'},el('div',{class:'vi-top'},el('b',{text:(x.at||'Ses kaydı')}),el('span',{class:'muted',text:x.sec?fmtSec(x.sec):''}),
+    confirmBtn('Sil',async()=>{S.day.voice=S.day.voice.filter(y=>y.id!==x.id);dropMedia(x.id);saveDay();renderVoice();},'link vi-del')),audioEl(x.id))));
+}
+function addVoice(id,sec){const n=new Date();S.day.voice=S.day.voice||[];S.day.voice.push({id,sec:Math.round(sec),at:pad(n.getHours())+':'+pad(n.getMinutes())});saveDay();renderVoice();toast('Sesli not kaydedildi');}
+async function startVoice(){
+  if(voiceRec)return;
+  let stream;try{stream=await navigator.mediaDevices.getUserMedia({audio:true});}catch(e){toast('Kayıt için mikrofon izni gerekiyor. Telefonun ayarlarından izin verebilirsin.');return;}
+  const types=['audio/webm;codecs=opus','audio/mp4','audio/webm','audio/ogg'];const type=types.find(t=>MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(t))||'';
+  let mr;try{mr=type?new MediaRecorder(stream,{mimeType:type}):new MediaRecorder(stream);}catch(e){stream.getTracks().forEach(t=>t.stop());toast('Bu telefonda kayıt başlatılamadı. Ses dosyası ekleyebilirsin.');return;}
+  const chunks=[];mr.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data);};
+  voiceRec={mr,stream,chunks,sec:0,date:S.date,cancel:false,t0:Date.now()};
+  voiceRec.timer=setInterval(()=>{if(!voiceRec)return;voiceRec.sec=(Date.now()-voiceRec.t0)/1000;const t=$('vrTime');if(t)t.textContent=fmtSec(voiceRec.sec);if(voiceRec.sec>=300)stopVoice();},250);
+  mr.onstop=async()=>{const r=voiceRec;voiceRec=null;clearInterval(r.timer);r.stream.getTracks().forEach(t=>t.stop());
+    if(r.cancel||!r.chunks.length){renderVoice();return;}
+    const blob=new Blob(r.chunks,{type:(mr.mimeType||type||'audio/webm').split(';')[0]});
+    try{const id='a-'+uid6();await idb.put('photos',{id,date:r.date,blob,kind:'audio'});
+      if(S.date===r.date)addVoice(id,r.sec);else{const d=normDay(S.monthDocs[r.date]||await idb.get('days',r.date),r.date);d.voice.push({id,sec:Math.round(r.sec),at:''});await idb.put('days',d);toast('Sesli not kaydedildi');renderVoice();}}
+    catch(e){toast(e&&e.name==='QuotaExceededError'?'Telefonunda yer kalmadı.':'Kayıt saklanamadı.');renderVoice();}};
+  mr.start(1000);renderVoice();
+}
+function stopVoice(cancel){if(!voiceRec)return;voiceRec.cancel=cancel===true;try{voiceRec.mr.stop();}catch(e){}}
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&voiceRec)stopVoice();});
 function openThemePicker(){
   openSheet('Tema',body=>{
     const cur=themePref;
@@ -3584,7 +3651,7 @@ async function loadTopicHist(){
   list.forEach(d=>{const snip=d.topicText.trim().replace(/\s+/g,' ');
     box.append(el('button',{class:'titem',onclick:()=>{setDate(d.date);go('topic');}},el('small',{text:fmt.format(parse(d.date))}),el('b',{text:d.topic.q}),el('span',{text:snip.length>140?snip.slice(0,140)+'…':snip})));});
 }
-function renderDay(){applyTheme();renderHeader();renderMood();renderSleep();renderCabAlert();renderWishToday();renderLetterPrompt();renderToday();renderEntries();renderPage();renderPhotos();renderThanksInputs();renderTopic();renderPlanToday();if(S.view==='journal')renderPastDay();setPart(defaultPart(),true);renderPartSubs();if(S.view==='wheel')renderWheel();if(S.view==='thanks')renderHistory();if(S.view==='month')renderMonth();}
+function renderDay(){applyTheme();renderHeader();renderMood();renderSleep();renderCabAlert();renderWishToday();renderLetterPrompt();renderToday();renderEntries();renderPage();renderPhotos();renderThanksInputs();renderTopic();renderPlanToday();if(S.view==='journal')renderPastDay();renderVoice();setPart(defaultPart(),true);renderPartSubs();if(S.view==='wheel')renderWheel();if(S.view==='thanks')renderHistory();if(S.view==='month')renderMonth();}
 function renderAll(){renderTypes();renderDay();}
 function go(v){
   S.view=v;
@@ -3600,7 +3667,7 @@ function go(v){
   if(v==='wheel')renderWheel();
   if(v==='quran')renderQuran();
   if(v==='month')initMonthPart();
-  if(v==='journal'){if(v!==S.prevView){nbDeco=false;nbSel=null;}renderPage();renderPastDay();}
+  if(v==='journal'){if(v!==S.prevView){nbDeco=false;nbSel=null;}renderPage();renderPastDay();renderVoice();}
   S.prevView=v;
   if(v==='yt')renderTrackers();
   if(v==='ch')renderChallenges();
@@ -3640,7 +3707,7 @@ async function pickDays(){
   if(r==='day')keys=keys.filter(k=>k===S.date);
   if(r==='month')keys=keys.filter(k=>k.slice(0,7)===S.date.slice(0,7));
   const label=r==='day'?fmtLong(S.date):r==='month'?monthName(S.date):'Tüm kayıtlar';
-  const fname=r==='day'?'Defterim-'+S.date:r==='month'?'Defterim-'+S.date.slice(0,7):'Defterim-tum-kayitlar-'+todayStr();
+  const fname=r==='day'?'NoktaNokta-'+S.date:r==='month'?'NoktaNokta-'+S.date.slice(0,7):'NoktaNokta-tum-kayitlar-'+todayStr();
   return {days:keys.map(k=>all[k]),label,fname};
 }
 function dayBlocks(d){
@@ -3682,7 +3749,7 @@ function dayBlocks(d){
 }
 async function buildBlocks(){
   const sel=await pickDays();
-  const blocks=[{k:'title',t:'Defterim'},{k:'sub',t:sel.label+' · '+new Intl.DateTimeFormat('tr-TR',{day:'numeric',month:'long',year:'numeric'}).format(new Date())+' tarihinde indirildi'}];
+  const blocks=[{k:'title',t:'Nokta Nokta'},{k:'sub',t:sel.label+' · '+new Intl.DateTimeFormat('tr-TR',{day:'numeric',month:'long',year:'numeric'}).format(new Date())+' tarihinde indirildi'}];
   const r=(document.querySelector('input[name="range"]:checked')||{}).value||'month';
   let n=0;const months=[];sel.days.forEach(d=>{const mk=d.date.slice(0,7);if(!months.includes(mk))months.push(mk);});
   if(r==='month'&&!months.includes(S.date.slice(0,7)))months.push(S.date.slice(0,7));
@@ -3788,7 +3855,7 @@ async function buildPdf(blocks,progress){
   const PW=1240,PH=1754,M=120,CW=PW-2*M,INK='#1D2633',INK2='#56606E',ACC='#2B6A8A';
   const pages=[];let cv,ctx,y,pageNo=0,firstDay=true;
   const SANS='Figtree, system-ui, sans-serif',HAND='Caveat, "Segoe Print", cursive';
-  async function finish(){if(!cv)return;ctx.fillStyle=INK2;ctx.font='400 22px '+SANS;ctx.textAlign='center';ctx.fillText('Defterim · '+pageNo,PW/2,PH-60);ctx.textAlign='left';pages.push({bytes:await canvasJpeg(cv,0.9),w:PW,h:PH});cv=null;}
+  async function finish(){if(!cv)return;ctx.fillStyle=INK2;ctx.font='400 22px '+SANS;ctx.textAlign='center';ctx.fillText('Nokta Nokta · '+pageNo,PW/2,PH-60);ctx.textAlign='left';pages.push({bytes:await canvasJpeg(cv,0.9),w:PW,h:PH});cv=null;}
   async function newPage(){await finish();cv=document.createElement('canvas');cv.width=PW;cv.height=PH;ctx=cv.getContext('2d');ctx.fillStyle='#FFFFFF';ctx.fillRect(0,0,PW,PH);ctx.textBaseline='alphabetic';y=M;pageNo++;}
   async function need(h){if(!cv)await newPage();else if(y+h>PH-M)await newPage();}
   function wrap(text,font,maxW){ctx.font=font;const out=[];String(text).split(/\n/).forEach(par=>{let line='';par.split(/\s+/).forEach(w=>{if(!w)return;let t=line?line+' '+w:w;if(ctx.measureText(t).width<=maxW){line=t;return;}if(line)out.push(line);line='';while(ctx.measureText(w).width>maxW){let k=w.length;while(k>1&&ctx.measureText(w.slice(0,k)).width>maxW)k--;out.push(w.slice(0,k));w=w.slice(k);}line=w;});out.push(line);});return out;}
@@ -3852,13 +3919,13 @@ async function runExport(kind){
     if(kind==='json'){
       const all=await loadAllDays();
       const days=Object.keys(all).sort().map(k=>all[k]);
-      const photos=[];const ids=new Set();days.forEach(d=>{d.photos.forEach(id=>ids.add(id));(d.deco||[]).forEach(i=>{if(i&&i.m)ids.add(i.m);});});S.stickers.forEach(id=>ids.add(id));
+      const photos=[];const ids=new Set();days.forEach(d=>{d.photos.forEach(id=>ids.add(id));(d.voice||[]).forEach(v=>{if(v&&v.id)ids.add(v.id);});(d.deco||[]).forEach(i=>{if(i&&i.m)ids.add(i.m);});});S.stickers.forEach(id=>ids.add(id));
       ['books','films','series'].forEach(k=>S.shelf[k].forEach(x=>{if(x.cover)ids.add(x.cover);}));S.works.forEach(w=>{w.photos.forEach(id=>ids.add(id));if(w.audio)ids.add(w.audio);});Object.values(S.bingo).forEach(c=>c.cells.forEach(z=>{if(z.photo)ids.add(z.photo);}));S.shop.forEach(i=>{if(i.photo)ids.add(i.photo);});S.dreams.forEach(d=>{if(d.photo)ids.add(d.photo);});S.vision.items.forEach(i=>{if(i.photo)ids.add(i.photo);});
       let i=0;
       for(const id of ids){i++;exStatus('Fotoğraflar yedeğe ekleniyor… ('+i+'/'+ids.size+')');
         try{const r=await idb.get('photos',id);if(r&&r.blob)photos.push({id:id,date:r.date||'',data:await blobToDataUrl(r.blob)});}catch(e){}}
       const data={app:'Defterim',version:2,exportedAt:new Date().toISOString(),settings:Object.assign({v:PLAN_VERSION},S.settings),monthly:S.monthly||{},questionsExtra:S.extraQ||[],shelf:S.shelf,reviews:S.reviews||{},works:S.works,cabinet:S.cabinet,wish:S.wish,letters:S.letters.map(l=>l.sealed&&!l.opened?Object.assign({},l,{text:''}):l),bingo:S.bingo,shop:S.shop,dreams:S.dreams,vision:S.vision,quran:S.quran,trackers:S.trackers,challenges:S.challenges,stickers:S.stickers,days:days,photos:photos};
-      if(await saveFile('Defterim-yedek-'+todayStr()+'.json',new Blob([JSON.stringify(data)],{type:'application/json'})))await markBackup();
+      if(await saveFile('NoktaNokta-yedek-'+todayStr()+'.json',new Blob([JSON.stringify(data)],{type:'application/json'})))await markBackup();
     }else{
       const r=await buildBlocks();
       if(!r.n){exStatus('Seçtiğin aralıkta henüz kayıt yok.');return;}
@@ -3875,7 +3942,7 @@ async function dataUrlToBlob(u){const r=await fetch(u);return await r.blob();}
 async function markBackup(){S.lastBackup=Date.now();try{await idb.put('kv',S.lastBackup,'lastBackup');}catch(e){}renderToday();}
 async function readRestore(file){
   const box=$('restoreBox');box.replaceChildren();box.hidden=false;
-  let data;try{data=JSON.parse(await file.text());}catch(e){box.append(el('p',{class:'muted',text:'Bu dosya okunamadı. Defterim’den indirdiğin .json yedeğini seç.'}));return;}
+  let data;try{data=JSON.parse(await file.text());}catch(e){box.append(el('p',{class:'muted',text:'Bu dosya okunamadı. Nokta Nokta’dan indirdiğin .json yedeğini seç.'}));return;}
   const days=(data&&Array.isArray(data.days)?data.days:[]).filter(d=>d&&typeof d.date==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(d.date));
   if(!days.length){box.append(el('p',{class:'muted',text:'Bu dosyada geri yüklenecek gün bulunamadı.'}));return;}
   if(!S.db){box.append(el('p',{class:'muted',text:'Geri yükleme için kayıt açık olmalı.'}));return;}
